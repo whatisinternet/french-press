@@ -7,10 +7,13 @@ gulp.task('g', ->
   type = processTypeArgs()
 
   if type == 'app'
+    args = processArgsApp()
     app.copyWebpackConfig()
     app.copyBaseStyle()
     app.copyBaseApp()
     app.copyIndex()
+    app.updatePackage(args['appName'], args['author'], args['ghUser'], args['email'])
+    app.updateReadMe(args['appName'], args['author'], args['ghUser'], args['email'])
 
   else if type == 'view'
     args = processArgsView()
@@ -27,6 +30,25 @@ gulp.task('g', ->
 processTypeArgs = ->
   return "app" unless  process.argv.indexOf('--app') == -1
   return "view" unless  process.argv.indexOf('--view') == -1
+
+processArgsApp= () ->
+
+  appNameIndex = process.argv.indexOf('--appName')
+  appName = process.argv[appNameIndex + 1]
+
+  authorIndex = process.argv.indexOf('--author')
+  author = process.argv[authorIndex + 1]
+
+  ghUserIndex = process.argv.indexOf('--ghUser')
+  ghUser = process.argv[ghUserIndex + 1]
+
+  emailIndex = process.argv.indexOf('--email')
+  email = process.argv[emailIndex + 1]
+
+  appName: appName
+  author: author
+  ghUser: ghUser
+  email: email
 
 processArgsView = () ->
   baseIndex = process.argv.indexOf('--view')
@@ -50,6 +72,3 @@ processArgsView = () ->
   functionName: functionName
   componentFolder: componentFolder
   path: routePath
-
-
-
