@@ -7,7 +7,15 @@ gulp.task('implode', ->
     'bin',
     'templates/*',
     'templates',
-    'gulpfile.js',
     'logo.png'
   ])
 )
+
+copyFile = (from, to) ->
+  try
+    fs.copySync(
+      path.resolve(__dirname, from),
+        path.resolve(__dirname, to))
+
+copyStrippedGulp = ->
+  copyFile('../../templates/gulpfile.js','../../gulpfile.js')
