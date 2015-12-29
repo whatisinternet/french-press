@@ -1,4 +1,4 @@
-# require './styles/index'
+require './styles/index'
 
 App = require("./scripts/app.coffee")
 

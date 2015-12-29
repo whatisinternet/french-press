@@ -13,7 +13,7 @@ A ReactJs + Webpack + Redux generator.
 - **Core**
 - [x] Components (with routes and router)
 - [x] Routes
-- [ ] Styles
+- [x] Styles
 - [ ] Mixins
 
 - **Redux**
@@ -43,6 +43,10 @@ A ReactJs + Webpack + Redux generator.
 **Compile**
 ```shell
   gulp compile
+```
+**Generate a new app**
+```shell
+  gulp g --app
 ```
 
 **Generate a component [full]**

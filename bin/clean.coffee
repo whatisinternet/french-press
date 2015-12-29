@@ -11,6 +11,9 @@ gulp.task('clean', ->
     'assets/scripts/components/*.coffee',
     'assets/scripts/components',
     'assets/scripts/*',
-    'assets/scripts'
+    'assets/scripts',
+    'assets',
+    'config/*',
+    'config',
   ])
 )
