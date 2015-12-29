@@ -37,11 +37,11 @@ module.exports =
       if (err)
         console.error(err)
 
-      result = data.replace(/french-press/g, "#{appName}")
-      result = data.replace(/French-Press/g, "#{appName}")
-      result = data.replace(/whatisinternet/g, "#{ghUser}")
-      result = data.replace(/Josh Teeter/g, "#{author}")
-      result = data.replace(/email/g, "#{email}")
+      result = data.replace("french-press", "#{appName}")
+      result = result.replace("French-Press", "#{appName}")
+      result = result.replace("whatisinternet", "#{ghUser}")
+      result = result.replace("Josh Teeter", "#{author}")
+      result = result.replace("email", "#{email}")
 
       fs.writeFile(path.resolve(__dirname, "../../package.json"), result, (err) ->
         if (err)
@@ -54,11 +54,11 @@ module.exports =
       if (err)
         console.error(err)
 
-      result = data.replace(/french-press/g, "#{appName}")
-      result = data.replace(/French Press/g, "#{appName}")
-      result = data.replace(/whatisinternet/g, "#{ghUser}")
-      result = data.replace(/Josh Teeter/g, "#{author}")
-      result = data.replace(/email/g, "#{email}")
+      result = data.replace("french-press", "#{appName}")
+      result = result.replace("French-Press", "#{appName}")
+      result = result.replace("whatisinternet", "#{ghUser}")
+      result = result.replace("Josh Teeter", "#{author}")
+      result = result.replace("email", "#{email}")
 
       fs.writeFile(path.resolve(__dirname, "../../README.md"), result, (err) ->
         if (err)

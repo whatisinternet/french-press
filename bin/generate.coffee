@@ -8,6 +8,7 @@ gulp.task('g', ->
 
   if type == 'app'
     args = processArgsApp()
+    console.log args
     app.copyWebpackConfig()
     app.copyBaseStyle()
     app.copyBaseApp()
