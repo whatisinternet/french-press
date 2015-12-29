@@ -1,5 +1,7 @@
 gulp = require('gulp')
 del = require('del')
+fs = require('fs-extra')
+path = require('path')
 
 gulp.task('implode', ->
   copyStrippedGulp()
@@ -20,4 +22,4 @@ copyFile = (from, to) ->
 
 copyStrippedGulp = ->
   del(['gulpfile.js'])
-  copyFile('../../templates/gulpfile.js','../../gulpfile.js')
+  copyFile('../../templates/gulpfile.js', '../../gulpfile.js')
