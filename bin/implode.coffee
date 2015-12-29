@@ -4,14 +4,15 @@ fs = require('fs-extra')
 path = require('path')
 
 gulp.task('implode', ->
-  copyStrippedGulp()
-  return del([
+  del([
     'bin/*',
     'bin',
     'templates/*',
+    'gulpfile.js'
     'templates',
     'logo.png'
   ])
+  copyStrippedGulp()
 )
 
 copyFile = (from, to) ->
