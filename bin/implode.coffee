@@ -19,4 +19,5 @@ copyFile = (from, to) ->
         path.resolve(__dirname, to))
 
 copyStrippedGulp = ->
+  del(['gulpfile.js'])
   copyFile('../../templates/gulpfile.js','../../gulpfile.js')
