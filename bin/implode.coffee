@@ -4,18 +4,15 @@ fs = require('fs-extra')
 path = require('path')
 
 gulp.task('implode', ->
-  del([
-    'gulpfile.js'
-  ])
+  removals = [
+    '../bin',
+    '../gulpfile.js',
+    '../logo.png'
+  ]
+  removals.map (fileFolder) ->
+    fs.removeSync(path.resolve(__dirname, fileFolder)
   copyStrippedGulp()
-  del([
-    'bin/*',
-    'bin',
-    'templates/*',
-    'gulpfile.js'
-    'templates',
-    'logo.png'
-  ])
+  fs.removeSync(path.resolve(__dirname, "../templates")
 )
 
 copyFile = (from, to) ->

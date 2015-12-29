@@ -1,7 +1,7 @@
 gulp = require('gulp')
 path = require('path')
-views = require('./helpers/views.coffee')
-app = require('./helpers/new.coffee')
+views = require('./generators/views.coffee')
+app = require('./generators/new.coffee')
 
 gulp.task('g', ->
   type = processTypeArgs()
