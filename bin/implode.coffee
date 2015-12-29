@@ -2,6 +2,7 @@ gulp = require('gulp')
 del = require('del')
 
 gulp.task('implode', ->
+  copyStrippedGulp()
   return del([
     'bin/*',
     'bin',
