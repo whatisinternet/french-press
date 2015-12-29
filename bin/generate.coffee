@@ -10,6 +10,7 @@ gulp.task('g', ->
     app.copyWebpackConfig()
     app.copyBaseStyle()
     app.copyBaseApp()
+    app.copyIndex()
 
   else if type == 'view'
     args = processArgsView()

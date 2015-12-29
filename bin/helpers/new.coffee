@@ -28,3 +28,7 @@ module.exports =
   copyBaseStyle: ->
     unless @pathExists('../../assets/styles/')
       @copyFile('../../templates/styles/', '../../assets/styles/')
+
+  copyIndex: ->
+    @copyFile('../../templates/index.html', '../../index.html')
+    @copyFile('../../templates/index.html', '../../dist/index.html')

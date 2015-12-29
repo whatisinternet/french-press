@@ -3,8 +3,9 @@ del = require('del')
 
 gulp.task('clean', ->
   return del([
-    'dist/*.js',
     'dist/images/*',
+    'dist/*',
+    'dist',
     'assets/config/*',
     'assets/config',
     'assets/scripts/components/app.coffee',
