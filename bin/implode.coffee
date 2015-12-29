@@ -5,6 +5,10 @@ path = require('path')
 
 gulp.task('implode', ->
   del([
+    'gulpfile.js'
+  ])
+  copyStrippedGulp()
+  del([
     'bin/*',
     'bin',
     'templates/*',
@@ -12,7 +16,6 @@ gulp.task('implode', ->
     'templates',
     'logo.png'
   ])
-  copyStrippedGulp()
 )
 
 copyFile = (from, to) ->
