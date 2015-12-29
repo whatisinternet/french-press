@@ -10,9 +10,9 @@ gulp.task('implode', ->
     '../logo.png'
   ]
   removals.map (fileFolder) ->
-    fs.removeSync(path.resolve(__dirname, fileFolder)
+    fs.removeSync(path.resolve(__dirname, fileFolder))
   copyStrippedGulp()
-  fs.removeSync(path.resolve(__dirname, "../templates")
+  fs.removeSync(path.resolve(__dirname, "../templates"))
 )
 
 copyFile = (from, to) ->
