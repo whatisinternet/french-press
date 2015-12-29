@@ -19,7 +19,8 @@ copyFile = (from, to) ->
     fs.copySync(
       path.resolve(__dirname, from),
         path.resolve(__dirname, to))
+  catch e
+    console.log e
 
 copyStrippedGulp = ->
-  del(['gulpfile.js'])
   copyFile('../../templates/gulpfile.js', '../../gulpfile.js')
