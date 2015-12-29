@@ -24,4 +24,4 @@ copyFile = (from, to) ->
     console.log e
 
 copyStrippedGulp = ->
-  copyFile('../../templates/gulpfile.js', '../../gulpfile.js')
+  copyFile('../templates/gulpfile.js', '../gulpfile.js')
