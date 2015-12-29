@@ -1,19 +1,22 @@
 # French Press
+---
+
+A ReactJs + Webpack + Redux generator.
 
 ![](https://raw.github.com/whatisinternet/french-press/master/logo.png)
 
 ---
 
-A ReactJs + Webpack + Redux generator.
 
 ### TODO:
 
-- [ ]**Core**
+- **Core**
 - [x] Components (with routes and router)
 - [x] Routes
+- [ ] Styles
 - [ ] Mixins
 
-- [ ]**Redux**
+- **Redux**
 - [ ] Models
 - [ ] Reducers
 - [ ] Stores
