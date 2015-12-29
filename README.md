@@ -46,7 +46,7 @@ A ReactJs + Webpack + Redux generator.
 ```
 **Generate a new app**
 ```shell
-  gulp g --app
+  gulp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
 ```
 
 **Generate a component [full]**
@@ -80,6 +80,14 @@ With custom folder name
   gulp g --view --[componentName] --slim
 ```
 
+**Remove the generators and leave your new app**
+
+This will remove all generators, and replace the Gulpfile with only build and
+run.
+
+```shell
+  gulp implode
+```
 
 ## Contributing
 
