@@ -4,7 +4,7 @@ fs = require('fs-extra')
 path = require('path')
 exec = require('child_process').exec
 
-gulp.task('implode', ['clean-project']->
+gulp.task('implode', ['clean-project'], ->
   exec('npm prune', (err, stdout, stderr) ->
     console.log(stdout)
     console.log(stderr)
