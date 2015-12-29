@@ -38,6 +38,7 @@ module.exports =
         console.error(err)
 
       result = data.replace(/french-press/g, "#{appName}")
+      result = data.replace(/French-Press/g, "#{appName}")
       result = data.replace(/whatisinternet/g, "#{ghUser}")
       result = data.replace(/Josh Teeter/g, "#{author}")
       result = data.replace(/email/g, "#{email}")
