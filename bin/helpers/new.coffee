@@ -33,7 +33,6 @@ module.exports =
     @copyFile('../../templates/index.html', '../../dist/index.html')
 
   updatePackage: (appName, author, ghUser, email) ->
-    fileName = if componentFolder == functionName then 'index' else functionName
     fs.readFile(path.resolve(__dirname, "../../package.json"), 'utf8', (err, data) ->
       if (err)
         console.error(err)
@@ -50,7 +49,6 @@ module.exports =
     )
 
   updateReadMe: (appName, author, ghUser, email) ->
-    fileName = if componentFolder == functionName then 'index' else functionName
     fs.readFile(path.resolve(__dirname, "../../README.md"), 'utf8', (err, data) ->
       if (err)
         console.error(err)

@@ -16,5 +16,6 @@ gulp.task('clean', ->
     'assets',
     'config/*',
     'config',
+    'index.html',
   ])
 )
