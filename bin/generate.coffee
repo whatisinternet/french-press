@@ -7,6 +7,7 @@ __ = require('./logger.coffee')
 processTypeArgs = ->
   return "app" unless  process.argv.indexOf('--app') == -1
   return "view" unless  process.argv.indexOf('--view') == -1
+  return "component" unless  process.argv.indexOf('--component') == -1
 
 processArgsApp= () ->
 
@@ -101,7 +102,7 @@ module.exports = ->
     __(action: 'Generate VIEW', state: 'generated', status: 'success')
 
   else if type == 'component'
-    __(action: 'Generate VIEW', state: 'generating')
+    __(action: 'Generate COMPONENT', state: 'generating')
     args = processArgsView()
     views.copyComponent(args['functionName'], args['componentFolder'], args['slim'])
     views.createComponent(args['functionName'], args['componentFolder'])
