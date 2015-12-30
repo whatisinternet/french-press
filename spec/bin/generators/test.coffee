@@ -44,22 +44,4 @@ describe('Generating tests for components', ->
       assert data.match(/demo/ig) == false
     )
   )
-  # return del([
-  #   path.resolve(__dirname, '../../../test/*'),
-  #   path.resolve(__dirname, '../../../test'),
-  #   path.resolve(__dirname, '../../../dist/images/*'),
-  #   path.resolve(__dirname, '../../../dist/*'),
-  #   path.resolve(__dirname, '../../../dist'),
-  #   path.resolve(__dirname, '../../../assets/config/*'),
-  #   path.resolve(__dirname, '../../../assets/config'),
-  #   path.resolve(__dirname, '../../../assets/scripts/components/app.coffee'),
-  #   path.resolve(__dirname, '../../../assets/scripts/components/*.coffee'),
-  #   path.resolve(__dirname, '../../../assets/scripts/components'),
-  #   path.resolve(__dirname, '../../../assets/scripts/*'),
-  #   path.resolve(__dirname, '../../../assets/scripts'),
-  #   path.resolve(__dirname, '../../../assets'),
-  #   path.resolve(__dirname, '../../../config/*'),
-  #   path.resolve(__dirname, '../../../config'),
-  #   path.resolve(__dirname, '../../../index.html'),
-  # ])
 )
