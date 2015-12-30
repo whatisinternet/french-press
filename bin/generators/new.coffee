@@ -79,8 +79,6 @@ module.exports =
     copyMixinFolder()
 
   newApp: (appName, ghUser, author, email) ->
-    newAppNoPackageOrReadme(appName, ghUser, author, email)
-    updatePackage(appName, author ghUser, email)
-    readmePackage(appName, author ghUser, email)
-
-
+    @newAppNoPackageOrReadme(appName, ghUser, author, email)
+    updatePackage(appName, author, ghUser, email)
+    updateReadMe(appName, author, ghUser, email)

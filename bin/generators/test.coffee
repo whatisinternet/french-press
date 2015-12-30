@@ -32,6 +32,7 @@ createTest = (functionName, componentFolder) ->
       console.error(err)
 
     result = data.replace(/demoFolder/g, "#{componentFolder}")
+    result = result.replace(/demoFile/g, "#{fileName}")
     result = result.replace(/demo/g, "#{functionName}")
 
     fs.writeFile(path.resolve(__dirname, "../../test/scripts/components/#{componentFolder}/#{fileName}.coffee"), result, (err) ->
@@ -45,8 +46,3 @@ module.exports =
     copySetup()
     copyTest(functionName, componentFolder)
     createTest(functionName, componentFolder)
-    exec('npm test', (err, stdout, stderr) ->
-      console.log(stdout)
-      console.log(stderr)
-    )
-

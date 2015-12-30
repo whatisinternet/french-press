@@ -1,6 +1,6 @@
 assert = require('assert')
 React = require('react')
-Testable = require('../../../../assets/scripts/components/demoFolder/demo.coffee')
+Testable = require('../../../../assets/scripts/components/demoFolder/demoFile.coffee')
 TestUtils = require('react-addons-test-utils')
 
 describe('demo test', ->
