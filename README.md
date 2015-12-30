@@ -25,6 +25,12 @@ An opinionated ReactJs + Webpack generator.
     - [Slim](#generate-a-component-slim)
       - No route included
 
+- Actions:
+  - [Reset](#reset)
+  - [Run](#run)
+  - [Compile for production](#compile)
+  - [:warning: Remove Generators :warning:](#remove-the-generators-and-leave-your-new-application)
+
 - Included modules other than React:
   - [Bemmer](https://www.npmjs.com/package/bemmer-node) - Create BEM with ease
   - [lodash](https://www.npmjs.com/package/lodash) - The missing standard lib
@@ -46,7 +52,7 @@ An opinionated ReactJs + Webpack generator.
 
 ---
 
-### Install
+### Install Requirements
 
 ```shell
   npm install
@@ -57,6 +63,7 @@ An opinionated ReactJs + Webpack generator.
 ### Usage
 
 #### Reset
+:bangbang: This will remove all generated content in your project use with extreme caution :bangbang:
 ```shell
   ./fp clean
 ```
