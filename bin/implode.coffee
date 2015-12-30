@@ -14,7 +14,7 @@ copyFile = (from, to) ->
 
 
 module.exports = ->
-  __(action: 'Implode', state: 'imploding' status: 'warn')
+  __(action: 'Implode', state: 'imploding', status: 'warn')
   removals = [
     '../bin',
     '../fp',
@@ -32,7 +32,7 @@ module.exports = ->
     console.log(stdout)
     console.log(stderr)
   )
-  __(action: 'Implode', state: 'imploded' status: 'success')
+  __(action: 'Implode', state: 'imploded', status: 'success')
 
 
 
