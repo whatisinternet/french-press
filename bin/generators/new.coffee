@@ -7,7 +7,10 @@ module.exports =
   gitInit: (canResetGit) ->
     return unless canResetGit
 
-    fs.removeSync(path.resolve(__dirname, "../.git/"))
+    exec('rm -rf ../.git/', (err, stdout, stderr) ->
+      console.log(stdout)
+      console.log(stderr)
+    )
 
     exec('git init', (err, stdout, stderr) ->
       console.log(stdout)
