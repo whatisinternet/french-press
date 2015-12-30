@@ -58,9 +58,9 @@ module.exports = ->
   if type == 'app'
     args = processArgsApp()
     if process.argv.length < 5
-      __({action: 'Generate APP', state: 'failed', status: 'error'})
+      __(action: 'Generate APP', state: 'failed', status: 'error')
       return
-    __({action: 'Generate APP', state: 'generating'})
+    __(action: 'Generate APP', state: 'generating')
     app.copyWebpackConfig()
     app.copyBaseStyle()
     app.copyBaseApp()
