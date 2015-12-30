@@ -46,7 +46,7 @@ An opinionated ReactJs + Webpack + Redux generator.
 ```
 **Generate a new app**
 ```shell
-  ./fp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
+  ./fp g --app --git --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
 ```
 
 **Generate a component [full]**
