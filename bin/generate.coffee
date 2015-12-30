@@ -50,6 +50,23 @@ processArgsView = ->
   componentFolder: componentFolder
   path: routePath
 
+processArgsComponent= ->
+  baseIndex = process.argv.indexOf('--component')
+  isSlim = process.argv.indexOf('--slim')
+
+  return unless baseIndex > -1
+  functionName = process.argv[baseIndex + 1].replace('--', '')
+  return unless functionName.length > 0
+  routePath = functionName
+
+  folderIndex = process.argv.indexOf('--folder')
+  componentFolder = process.argv[folderIndex + 1]
+  return unless folderIndex > -1
+
+  slim: isSlim
+  functionName: functionName
+  componentFolder: componentFolder
+
 module.exports = ->
 
   __(action: 'Generate')
@@ -83,3 +100,11 @@ module.exports = ->
     views.updateStyles(args['componentFolder'])
     __(action: 'Generate VIEW', state: 'generated', status: 'success')
 
+  else if type == 'component'
+    __(action: 'Generate VIEW', state: 'generating')
+    args = processArgsView()
+    views.copyComponent(args['functionName'], args['componentFolder'], args['slim'])
+    views.createComponent(args['functionName'], args['componentFolder'])
+    views.copyStyle(args['componentFolder'])
+    views.updateStyles(args['componentFolder'])
+    __(action: 'Generate COMPONENT', state: 'generated', status: 'success')
