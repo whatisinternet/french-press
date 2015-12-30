@@ -45,8 +45,11 @@ An opinionated ReactJs + Webpack + Redux generator.
   ./fp compile
 ```
 **Generate a new app**
+
+*You will want to `rm -rf .git` and `git init` before running this command*
+
 ```shell
-  ./fp g --app --git --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
+  ./fp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
 ```
 
 **Generate a component [full]**

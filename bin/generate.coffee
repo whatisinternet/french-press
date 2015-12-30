@@ -10,8 +10,6 @@ processTypeArgs = ->
 
 processArgsApp= () ->
 
-  resetGit = process.argv.indexOf('--git')
-
   appNameIndex = process.argv.indexOf('--appName')
   appName = process.argv[appNameIndex + 1]
 
@@ -28,7 +26,6 @@ processArgsApp= () ->
   author: author
   ghUser: ghUser
   email: email
-  gitInit: resetGit
 
 processArgsView = ->
   baseIndex = process.argv.indexOf('--view')
@@ -70,7 +67,6 @@ module.exports = ->
     app.copyIndex()
     app.updatePackage(args['appName'], args['author'], args['ghUser'], args['email'])
     app.updateReadMe(args['appName'], args['author'], args['ghUser'], args['email'])
-    app.gitInit(args['gitInit'])
     __(action: 'Generate APP', state: 'generated', status: 'success')
 
   else if type == 'view'

@@ -4,28 +4,6 @@ exec = require('child_process').exec
 del = require('del')
 
 module.exports =
-  gitInit: (canResetGit) ->
-    return unless canResetGit
-
-    exec('rm -rf ../.git/', (err, stdout, stderr) ->
-      console.log(stdout)
-      console.log(stderr)
-    )
-
-    exec('git init', (err, stdout, stderr) ->
-      console.log(stdout)
-      console.log(stderr)
-    )
-
-    exec('git add . --all', (err, stdout, stderr) ->
-      console.log(stdout)
-      console.log(stderr)
-    )
-
-    exec('git commit -m "Init"', (err, stdout, stderr) ->
-      console.log(stdout)
-      console.log(stderr)
-    )
 
   copyFile: (from, to) ->
     try
