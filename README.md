@@ -13,13 +13,16 @@ An opinionated ReactJs + Webpack generator.
     - Builds router
     - Adds mixin folder
     - Adds webpack config
-    - Replaces refs to French Press with your own
+    - Generates a test suite
+    - Replaces refs to french-press with your own
   - View component (base component)
+    - All come with tests
     - [Full](#generate-a-view-full)
       - Comes with routes
     - [Slim](#generate-a-view-slim)
       - Comes with routes
   - Child component
+    - All come with tests
     - [Full](#generate-a-component-full)
       - No route included
     - [Slim](#generate-a-component-slim)
@@ -29,6 +32,7 @@ An opinionated ReactJs + Webpack generator.
   - [Reset](#reset)
   - [Run](#run)
   - [Compile for production](#compile)
+  - [Test](#test)
   - [:warning: Remove Generators :warning:](#remove-the-generators-and-leave-your-new-application)
 
 - Included modules other than React:
@@ -39,8 +43,6 @@ An opinionated ReactJs + Webpack generator.
   - [Redux](https://www.npmjs.com/package/redux) - Functional flux store for your data
 
 ## What's missing:
-
-- **Tests**
 
 - **Redux**
 - [ ] Models
@@ -80,6 +82,13 @@ An opinionated ReactJs + Webpack generator.
 #### Compile
 ```shell
   ./fp compile
+```
+
+---
+
+#### Test
+```shell
+  ./fp test
 ```
 
 ---
