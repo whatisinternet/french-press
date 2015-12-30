@@ -9,11 +9,21 @@ An opinionated ReactJs + Webpack generator.
 
 ## What's in the box?
 - Generators:
-  - Base app
+  - [Base app](#generate-a-new-application)
+    - Builds router
+    - Adds mixin folder
+    - Adds webpack config
+    - Replaces refs to French Press with your own
   - View component (base component)
+    - [Full](#generate-a-view-full)
+      - Comes with routes
+    - [Slim](#generate-a-view-slim)
+      - Comes with routes
   - Child component
-  - Routing
-  - Mixins
+    - [Full](#generate-a-component-full)
+      - No route included
+    - [Slim](#generate-a-component-slim)
+      - No route included
 
 - Included modules other than React:
   - [Bemmer](https://www.npmjs.com/package/bemmer-node) - Create BEM with ease
