@@ -33,6 +33,7 @@ An opinionated ReactJs + Webpack generator.
   - [Run](#run)
   - [Compile for production](#compile)
   - [Test](#test)
+  - [Generator tests](#generator-tests)
   - [:warning: Remove Generators :warning:](#remove-the-generators-and-leave-your-new-application)
 
 - Included modules other than React:
@@ -89,6 +90,15 @@ An opinionated ReactJs + Webpack generator.
 #### Test
 ```shell
   ./fp test
+```
+
+---
+
+#### Generator tests
+:bangbang: This will remove all generated content in your project! Use before generating anything  :bangbang:
+
+```shell
+  ./fp clean && npm run spec && ./fp clean
 ```
 
 ---
