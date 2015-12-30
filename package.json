@@ -26,17 +26,18 @@
     "redux": "^3.0.5"
   },
   "devDependencies": {
+    "cli-color": "^1.1.0",
+    "coffee-loader": "^0.7.2",
+    "css-loader": "^0.9.1",
     "del": "^2.2.0",
     "file-loader": "^0.8.5",
     "fs-extra": "^0.26.3",
-    "url-loader": "^0.5.7",
-    "sass-loader": "^1.0.2",
-    "style-loader": "^0.8.3",
-    "node-sass": "^3.1.2",
-    "css-loader": "^0.9.1",
     "html-loader": "^0.4.0",
     "json-loader": "^0.5.4",
-    "coffee-loader": "^0.7.2",
+    "node-sass": "^3.1.2",
+    "sass-loader": "^1.0.2",
+    "style-loader": "^0.8.3",
+    "url-loader": "^0.5.7",
     "webpack": "^1.8.10",
     "webpack-dev-server": "~1.12.1"
   }
