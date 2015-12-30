@@ -86,7 +86,7 @@ module.exports = ->
   else if type == 'view'
     __(action: 'Generate VIEW', state: 'generating')
     args = processArgsView()
-    views.generateView(args['functionName'], args['componentFolder'], args['path'] args['slim'])
+    views.generateView(args['functionName'], args['componentFolder'], args['path'], args['slim'])
     test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate VIEW', state: 'generated', status: 'success')
 
