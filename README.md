@@ -1,7 +1,7 @@
 # French Press
 ---
 
-A ReactJs + Webpack + Redux generator.
+An opinionated ReactJs + Webpack + Redux generator.
 
 ![](https://raw.github.com/whatisinternet/french-press/master/logo.png)
 
@@ -25,28 +25,31 @@ A ReactJs + Webpack + Redux generator.
 ### Install
 
 ```shell
-  npm install && npm install -g gulp
+  npm install
 ```
 
 ### Usage
 
 **Reset**
 ```shell
-  gulp clean
+  ./fp clean
 ```
 
 **Run**
 ```shell
-  gulp run
+  ./fp run
 ```
 
 **Compile**
 ```shell
-  gulp compile
+  ./fp compile
 ```
 **Generate a new app**
+
+*You will want to `rm -rf .git` and `git init` before running this command*
+
 ```shell
-  gulp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
+  ./fp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
 ```
 
 **Generate a component [full]**
@@ -55,38 +58,37 @@ A ReactJs + Webpack + Redux generator.
 
 As normal component with no customizations (route will match method name
 ```shell
-  gulp g --view --[componentName]
+  ./fp g --view --[componentName]
 ```
 
 As base route
 ```shell
-  gulp g --view --[componentName] --route root
+  ./fp g --view --[componentName] --route root
 ```
 
 With custom route
 ```shell
-  gulp g --view --[componentName] --route [customRouteName]
+  ./fp g --view --[componentName] --route [customRouteName]
 ```
 
 With custom folder name
 *NB: This will cause the component to be named based on the actual name of the function*
 ```shell
-  gulp g --view --[componentName] --componentFolder [componentFolderName]
+  ./fp g --view --[componentName] --componentFolder [componentFolderName]
 ```
 
 **Generate a component [slim]**
 
 ```shell
-  gulp g --view --[componentName] --slim
+  ./fp g --view --[componentName] --slim
 ```
 
 **Remove the generators and leave your new app**
 
-This will remove all generators, and replace the Gulpfile with only build and
-run.
+This will remove all generators.
 
 ```shell
-  gulp implode
+  ./fp implode
 ```
 
 ## Contributing

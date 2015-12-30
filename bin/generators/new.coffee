@@ -1,7 +1,10 @@
 fs = require('fs-extra')
 path = require('path')
+exec = require('child_process').exec
+del = require('del')
 
 module.exports =
+
   copyFile: (from, to) ->
     try
       fs.copySync(
@@ -30,7 +33,7 @@ module.exports =
 
   copyIndex: ->
     @copyFile('../../templates/index.html', '../../index.html')
-    @copyFile('../../templates/index.html', '../../dist/index.html')
+    @copyFile('../../templates/index-production.html', '../../dist/index.html')
 
   updatePackage: (appName, author, ghUser, email) ->
     fs.readFile(path.resolve(__dirname, "../../package.json"), 'utf8', (err, data) ->
@@ -39,6 +42,7 @@ module.exports =
 
       result = data.replace("french-press", "#{appName}")
       result = result.replace("French-Press", "#{appName}")
+      result = result.replace("French Press", "#{appName}")
       result = result.replace("whatisinternet", "#{ghUser}")
       result = result.replace("Josh Teeter", "#{author}")
       result = result.replace("joshteeter@gmail.com", "#{email}")
@@ -56,6 +60,7 @@ module.exports =
 
       result = data.replace("french-press", "#{appName}")
       result = result.replace("French-Press", "#{appName}")
+      result = result.replace("French Press", "#{appName}")
       result = result.replace("whatisinternet", "#{ghUser}")
       result = result.replace("Josh Teeter", "#{author}")
       result = result.replace("joshteeter@gmail.com", "#{email}")

@@ -1,8 +1,9 @@
-gulp = require('gulp')
 del = require('del')
+__ = require('./logger.coffee')
 
-gulp.task('clean', ->
-  return del([
+module.exports = ->
+  __(action: 'Clean', state: 'Cleaning')
+  del([
     'dist/images/*',
     'dist/*',
     'dist',
@@ -18,4 +19,4 @@ gulp.task('clean', ->
     'config',
     'index.html',
   ])
-)
+  __(action: 'Clean', state: 'cleaned', status: 'success')

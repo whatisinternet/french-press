@@ -1,16 +1,10 @@
-gulp = require('gulp')
 exec = require('child_process').exec
+__ = require('./logger.coffee')
 
-gulp.task('compile', ->
+module.exports = ->
+  __(action: 'Build', state: 'building')
   exec('npm run deploy', (err, stdout, stderr) ->
     console.log(stdout)
     console.log(stderr)
   )
-)
-
-gulp.task('run', ->
-  exec('npm run app', (err, stdout, stderr) ->
-    console.log(stdout)
-    console.log(stderr)
-  )
-)
+  __(action: 'Build', state: 'built', status: 'success')
