@@ -3,7 +3,7 @@ fs = require('fs-extra')
 path = require('path')
 exec = require('child_process').exec
 
-if process.argv[3] == 'implode'
+if process.argv[2] == 'implode'
   removals = [
     '../bin',
     '../gulpfile.js',
