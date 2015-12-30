@@ -1,6 +1,7 @@
 path = require('path')
 views = require('./generators/views.coffee')
 app = require('./generators/new.coffee')
+test = require('./generators/test.coffee')
 exec = require('child_process').exec
 __ = require('./logger.coffee')
 
@@ -79,33 +80,19 @@ module.exports = ->
       __(action: 'Generate APP', state: 'failed', status: 'error')
       return
     __(action: 'Generate APP', state: 'generating')
-    app.copyWebpackConfig()
-    app.copyBaseStyle()
-    app.copyBaseApp()
-    app.copyIndex()
-    app.copyMixinFolder()
-    app.updatePackage(args['appName'], args['author'], args['ghUser'], args['email'])
-    app.updateReadMe(args['appName'], args['author'], args['ghUser'], args['email'])
+    app.newApp(args['appName'], args['author'], args['ghUser'], args['email'])
     __(action: 'Generate APP', state: 'generated', status: 'success')
 
   else if type == 'view'
     __(action: 'Generate VIEW', state: 'generating')
     args = processArgsView()
-    views.copyRoutes()
-    views.copyRouter()
-    views.copyComponent(args['functionName'], args['componentFolder'], args['slim'])
-    views.createRoute(args['path'], args['functionName'])
-    views.createComponentMethod(args['functionName'], args['componentFolder'])
-    views.createComponent(args['functionName'], args['componentFolder'])
-    views.copyStyle(args['componentFolder'])
-    views.updateStyles(args['componentFolder'])
+    views.generateView(args['functionName'], args['componentFolder'], args['path'], args['slim'])
+    test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate VIEW', state: 'generated', status: 'success')
 
   else if type == 'component'
     __(action: 'Generate COMPONENT', state: 'generating')
     args = processArgsComponent()
-    views.copyComponent(args['functionName'], args['componentFolder'], args['slim'])
-    views.createComponent(args['functionName'], args['componentFolder'])
-    views.copyStyle(args['componentFolder'])
-    views.updateStyles(args['componentFolder'])
+    views.generateComponent(args['functionName'], args['componentFolder'], args['slim'])
+    test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate COMPONENT', state: 'generated', status: 'success')

@@ -14,10 +14,11 @@ copyFile = (from, to) ->
 
 
 module.exports = ->
-  __(action: 'Implode', state: 'imploding', status: 'warn')
+  __(action: 'Implode', state: 'imploding', status: 'warn', message: "please wait")
   removals = [
     '../bin',
     '../fp',
+    '../spec',
     '../logo.png'
   ]
   removals.map (fileFolder) ->
