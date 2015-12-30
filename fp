@@ -4,7 +4,23 @@
 
 require('coffee-script').register();
 
-// require('./bin/generate.coffee');
-// require('./bin/clean.coffee');
-// require('./bin/build.coffee');
-require('./bin/implode.coffee');
+switch (process.argv[2]) {
+  case 'implode':
+    require('./bin/implode.coffee')();
+    break;
+  case 'g':
+    require('./bin/generate.coffee')();
+    break;
+  case 'generate':
+    require('./bin/generate.coffee')();
+    break;
+  case 'clean':
+    require('./bin/clean.coffee')();
+    break;
+  case 'build':
+    require('./bin/build.coffee')();
+    break;
+  case 'run':
+    require('./bin/run.coffee')();
+    break;
+}

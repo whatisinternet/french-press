@@ -1,32 +1,7 @@
-gulp = require('gulp')
 path = require('path')
 views = require('./generators/views.coffee')
 app = require('./generators/new.coffee')
-
-gulp.task('g', ->
-  type = processTypeArgs()
-
-  if type == 'app'
-    args = processArgsApp()
-    console.log args
-    app.copyWebpackConfig()
-    app.copyBaseStyle()
-    app.copyBaseApp()
-    app.copyIndex()
-    app.updatePackage(args['appName'], args['author'], args['ghUser'], args['email'])
-    app.updateReadMe(args['appName'], args['author'], args['ghUser'], args['email'])
-
-  else if type == 'view'
-    args = processArgsView()
-    views.copyRoutes()
-    views.copyRouter()
-    views.copyComponent(args['functionName'], args['componentFolder'], args['slim'])
-    views.createRoute(args['path'], args['functionName'])
-    views.createComponentMethod(args['functionName'], args['componentFolder'])
-    views.createComponent(args['functionName'], args['componentFolder'])
-    views.copyStyle(args['componentFolder'])
-    views.updateStyles(args['componentFolder'])
-)
+exec = require('child_process').exec
 
 processTypeArgs = ->
   return "app" unless  process.argv.indexOf('--app') == -1
@@ -51,7 +26,7 @@ processArgsApp= () ->
   ghUser: ghUser
   email: email
 
-processArgsView = () ->
+processArgsView = ->
   baseIndex = process.argv.indexOf('--view')
   isSlim = process.argv.indexOf('--slim')
 
@@ -73,3 +48,33 @@ processArgsView = () ->
   functionName: functionName
   componentFolder: componentFolder
   path: routePath
+
+module.exports = ->
+
+  type = processTypeArgs()
+
+  if type == 'app'
+    args = processArgsApp()
+    console.log args
+    app.copyWebpackConfig()
+    app.copyBaseStyle()
+    app.copyBaseApp()
+    app.copyIndex()
+    app.updatePackage(args['appName'], args['author'], args['ghUser'], args['email'])
+    app.updateReadMe(args['appName'], args['author'], args['ghUser'], args['email'])
+
+  else if type == 'view'
+    args = processArgsView()
+    views.copyRoutes()
+    views.copyRouter()
+    views.copyComponent(args['functionName'], args['componentFolder'], args['slim'])
+    views.createRoute(args['path'], args['functionName'])
+    views.createComponentMethod(args['functionName'], args['componentFolder'])
+    views.createComponent(args['functionName'], args['componentFolder'])
+    views.copyStyle(args['componentFolder'])
+    views.updateStyles(args['componentFolder'])
+
+  exec('npm install', (err, stdout, stderr) ->
+    console.log(stdout)
+    console.log(stderr)
+  )

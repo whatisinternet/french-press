@@ -1,7 +1,6 @@
-gulp = require('gulp')
 del = require('del')
 
-gulp.task('clean', ->
+module.exports = ->
   return del([
     'dist/images/*',
     'dist/*',
@@ -18,4 +17,3 @@ gulp.task('clean', ->
     'config',
     'index.html',
   ])
-)

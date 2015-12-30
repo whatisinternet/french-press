@@ -14,7 +14,7 @@ copyFile = (from, to) ->
 copyStrippedGulp = ->
   copyFile('../templates/gulpfile.js', '../gulpfile.js')
 
-if process.argv[2] == 'implode'
+module.exports = ->
   removals = [
     '../bin',
     '../gulpfile.js',
