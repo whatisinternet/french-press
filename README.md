@@ -10,7 +10,8 @@ An opinionated ReactJs + Webpack + Redux generator.
 ### TODO:
 
 - **Core**
-- [x] Components (with routes and router)
+- [x] Views (with routes and router)
+- [x] Components
 - [x] Routes
 - [x] Styles
 - [x] Mixins
@@ -21,11 +22,15 @@ An opinionated ReactJs + Webpack + Redux generator.
 - [ ] Stores
 - [ ] Middleware
 
+---
+
 ### Install
 
 ```shell
   npm install
 ```
+
+---
 
 ### Usage
 
@@ -34,15 +39,22 @@ An opinionated ReactJs + Webpack + Redux generator.
   ./fp clean
 ```
 
+---
+
 **Run**
 ```shell
   ./fp run
 ```
 
+---
+
 **Compile**
 ```shell
   ./fp compile
 ```
+
+---
+
 **Generate a new app**
 
 *You will want to `rm -rf .git` and `git init` before running this command*
@@ -51,7 +63,9 @@ An opinionated ReactJs + Webpack + Redux generator.
   ./fp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
 ```
 
-**Generate a component [full]**
+---
+
+**Generate a view [full]**
 
 *NB: Components are placed in components/[componentName]/index.coffee by default*
 
@@ -76,19 +90,38 @@ With custom folder name
   ./fp g --view --[componentName] --componentFolder [componentFolderName]
 ```
 
-**Generate a component [slim]**
+**Generate a view [slim]**
 
 ```shell
   ./fp g --view --[componentName] --slim
 ```
 
-**Remove the generators and leave your new app**
+---
 
+**Generate a component [full]**
+
+*NB: Components are placed in components/[componentName]/index.coffee by default*
+
+```shell
+  ./fp g --component --[componentName] --folder [componentFolderName]
+```
+
+**Generate a component [slim]**
+
+```shell
+  ./fp g --component --[componentName] --folder [componentFolderName] --slim
+```
+
+---
+
+**Remove the generators and leave your new app**
 This will remove all generators.
 
 ```shell
   ./fp implode
 ```
+
+---
 
 ## Contributing
 
