@@ -2,6 +2,7 @@ path = require('path')
 views = require('./generators/views.coffee')
 app = require('./generators/new.coffee')
 exec = require('child_process').exec
+__ = require('./logger.coffee')
 
 processTypeArgs = ->
   return "app" unless  process.argv.indexOf('--app') == -1
@@ -51,19 +52,25 @@ processArgsView = ->
 
 module.exports = ->
 
+  __(action: 'Generate')
   type = processTypeArgs()
 
   if type == 'app'
     args = processArgsApp()
-    console.log args
+    if process.argv.length < 5
+      __({action: 'Generate APP', state: 'failed', status: 'error'})
+      return
+    __({action: 'Generate APP', state: 'generating'})
     app.copyWebpackConfig()
     app.copyBaseStyle()
     app.copyBaseApp()
     app.copyIndex()
     app.updatePackage(args['appName'], args['author'], args['ghUser'], args['email'])
     app.updateReadMe(args['appName'], args['author'], args['ghUser'], args['email'])
+    __(action: 'Generate APP', state: 'generated', status: 'success')
 
   else if type == 'view'
+    __(action: 'Generate VIEW', state: 'generating')
     args = processArgsView()
     views.copyRoutes()
     views.copyRouter()
@@ -73,8 +80,5 @@ module.exports = ->
     views.createComponent(args['functionName'], args['componentFolder'])
     views.copyStyle(args['componentFolder'])
     views.updateStyles(args['componentFolder'])
+    __(action: 'Generate VIEW', state: 'generated', status: 'success')
 
-  exec('npm install', (err, stdout, stderr) ->
-    console.log(stdout)
-    console.log(stderr)
-  )
