@@ -23,4 +23,6 @@ switch (process.argv[2]) {
   case 'run':
     require('./bin/run.coffee')();
     break;
+  default:
+    console.log(process.argv);
 }
