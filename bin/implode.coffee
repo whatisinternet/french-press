@@ -11,7 +11,7 @@ if process.argv[2] == 'implode'
   ]
   removals.map (fileFolder) ->
     fs.removeSync(path.resolve(__dirname, fileFolder))
-  copyStrippedGulp()
+  @copyStrippedGulp()
   fs.removeSync(path.resolve(__dirname, "../templates"))
 
   exec('npm prune', (err, stdout, stderr) ->
@@ -24,7 +24,7 @@ if process.argv[2] == 'implode'
   )
 
 
-copyFile = (from, to) ->
+copyFile:(from, to) ->
   try
     fs.copySync(
       path.resolve(__dirname, from),
@@ -32,6 +32,6 @@ copyFile = (from, to) ->
   catch e
     console.log e
 
-copyStrippedGulp = ->
-  copyFile('../templates/gulpfile.js', '../gulpfile.js')
+copyStrippedGulp: ->
+  @copyFile('../templates/gulpfile.js', '../gulpfile.js')
 
