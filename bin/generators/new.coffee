@@ -48,7 +48,6 @@ module.exports =
       result = result.replace("French Press", "#{appName}")
       result = result.replace("whatisinternet", "#{ghUser}")
       result = result.replace("Josh Teeter", "#{author}")
-      result = result.replace("joshteeter@gmail.com", "#{email}")
 
       fs.writeFile(path.resolve(__dirname, "../../package.json"), result, (err) ->
         if (err)
@@ -66,7 +65,6 @@ module.exports =
       result = result.replace("French Press", "#{appName}")
       result = result.replace("whatisinternet", "#{ghUser}")
       result = result.replace("Josh Teeter", "#{author}")
-      result = result.replace("joshteeter@gmail.com", "#{email}")
 
       fs.writeFile(path.resolve(__dirname, "../../README.md"), result, (err) ->
         if (err)

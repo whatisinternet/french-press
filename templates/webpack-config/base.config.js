@@ -22,7 +22,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ["", ".js", ".coffee", ".sass", ".css", ".md", "eot", "svg", "ttf", "woff", "woff2"]
+    extensions: ["", ".js", ".coffee", ".sass", "eot", "svg", "ttf", "woff", "woff2"]
   },
 
   plugins: [

@@ -17,6 +17,7 @@
     "bemmer-node": "^0.1.2",
     "coffee-script": "^1.9.3",
     "lodash": "^3.10.0",
+    "moment": "^2.10.6",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-mini-router": "^2.0.0",
