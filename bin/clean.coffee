@@ -4,6 +4,8 @@ __ = require('./logger.coffee')
 module.exports = ->
   __(action: 'Clean', state: 'Cleaning')
   del([
+    'test/*',
+    'test',
     'dist/images/*',
     'dist/*',
     'dist',
