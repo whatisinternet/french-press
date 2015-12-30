@@ -16,11 +16,11 @@ pathExists = (p) ->
     false
 
 module.exports =
-  generateView: (functionName, componentFolder, slim) ->
+  generateView: (functionName, componentFolder, route, slim) ->
     @copyRoutes()
     @copyRouter()
     @copyComponent(functionName, componentFolder, slim)
-    @createRoute(path, functionName)
+    @createRoute(route, functionName)
     @createComponentMethod(functionName, componentFolder)
     @createComponent(functionName, componentFolder)
     @copyStyle(componentFolder)
