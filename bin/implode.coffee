@@ -18,6 +18,7 @@ module.exports = ->
   removals = [
     '../bin',
     '../fp',
+    '../spec',
     '../logo.png'
   ]
   removals.map (fileFolder) ->
