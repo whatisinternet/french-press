@@ -69,7 +69,7 @@ An opinionated ReactJs + Webpack + Redux generator.
 
 *NB: Components are placed in components/[componentName]/index.coffee by default*
 
-As normal component with no customizations (route will match method name
+As normal component with no customizations (route will match method name)
 ```shell
   ./fp g --view --[componentName]
 ```
@@ -115,6 +115,7 @@ With custom folder name
 ---
 
 **Remove the generators and leave your new app**
+
 This will remove all generators.
 
 ```shell
