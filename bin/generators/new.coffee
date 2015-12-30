@@ -42,6 +42,7 @@ module.exports =
 
       result = data.replace("french-press", "#{appName}")
       result = result.replace("French-Press", "#{appName}")
+      result = result.replace("French Press", "#{appName}")
       result = result.replace("whatisinternet", "#{ghUser}")
       result = result.replace("Josh Teeter", "#{author}")
       result = result.replace("joshteeter@gmail.com", "#{email}")
@@ -59,6 +60,7 @@ module.exports =
 
       result = data.replace("french-press", "#{appName}")
       result = result.replace("French-Press", "#{appName}")
+      result = result.replace("French Press", "#{appName}")
       result = result.replace("whatisinternet", "#{ghUser}")
       result = result.replace("Josh Teeter", "#{author}")
       result = result.replace("joshteeter@gmail.com", "#{email}")
