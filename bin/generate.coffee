@@ -103,7 +103,7 @@ module.exports = ->
 
   else if type == 'component'
     __(action: 'Generate COMPONENT', state: 'generating')
-    args = processArgsView()
+    args = processArgsComponent()
     views.copyComponent(args['functionName'], args['componentFolder'], args['slim'])
     views.createComponent(args['functionName'], args['componentFolder'])
     views.copyStyle(args['componentFolder'])
