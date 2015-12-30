@@ -2,6 +2,7 @@ del = require('del')
 fs = require('fs-extra')
 path = require('path')
 exec = require('child_process').exec
+__ = require('./logger.coffee')
 
 copyFile = (from, to) ->
   try
@@ -11,18 +12,16 @@ copyFile = (from, to) ->
   catch e
     console.log e
 
-copyStrippedGulp = ->
-  copyFile('../templates/gulpfile.js', '../gulpfile.js')
 
 module.exports = ->
+  __(action: 'Implode', state: 'imploding' status: 'warn')
   removals = [
     '../bin',
-    '../gulpfile.js',
+    '../fp',
     '../logo.png'
   ]
   removals.map (fileFolder) ->
     fs.removeSync(path.resolve(__dirname, fileFolder))
-  copyStrippedGulp()
   fs.removeSync(path.resolve(__dirname, "../templates"))
 
   exec('npm prune', (err, stdout, stderr) ->
@@ -33,6 +32,7 @@ module.exports = ->
     console.log(stdout)
     console.log(stderr)
   )
+  __(action: 'Implode', state: 'imploded' status: 'success')
 
 
 
