@@ -35,6 +35,9 @@ module.exports =
     @copyFile('../../templates/index.html', '../../index.html')
     @copyFile('../../templates/index-production.html', '../../dist/index.html')
 
+  copyMixinFolder: ->
+    @copyFile('../../templates/scripts/mixins/', '../../assets/scripts/mixins/')
+
   updatePackage: (appName, author, ghUser, email) ->
     fs.readFile(path.resolve(__dirname, "../../package.json"), 'utf8', (err, data) ->
       if (err)

@@ -65,6 +65,7 @@ module.exports = ->
     app.copyBaseStyle()
     app.copyBaseApp()
     app.copyIndex()
+    app.copyMixinFolder()
     app.updatePackage(args['appName'], args['author'], args['ghUser'], args['email'])
     app.updateReadMe(args['appName'], args['author'], args['ghUser'], args['email'])
     __(action: 'Generate APP', state: 'generated', status: 'success')
