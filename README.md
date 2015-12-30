@@ -7,14 +7,13 @@ An opinionated ReactJs + Webpack + Redux generator.
 
 ---
 
-
 ### TODO:
 
 - **Core**
 - [x] Components (with routes and router)
 - [x] Routes
 - [x] Styles
-- [ ] Mixins
+- [x] Mixins
 
 - **Redux**
 - [ ] Models
