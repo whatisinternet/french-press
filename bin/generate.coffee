@@ -1,6 +1,7 @@
 path = require('path')
 views = require('./generators/views.coffee')
 app = require('./generators/new.coffee')
+test = require('./generators/test.coffee')
 exec = require('child_process').exec
 __ = require('./logger.coffee')
 
@@ -99,6 +100,7 @@ module.exports = ->
     views.createComponent(args['functionName'], args['componentFolder'])
     views.copyStyle(args['componentFolder'])
     views.updateStyles(args['componentFolder'])
+    test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate VIEW', state: 'generated', status: 'success')
 
   else if type == 'component'
