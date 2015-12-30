@@ -1,26 +1,38 @@
 # French Press
 ---
 
-An opinionated ReactJs + Webpack + Redux generator.
+An opinionated ReactJs + Webpack generator.
 
 ![](https://raw.github.com/whatisinternet/french-press/master/logo.png)
 
 ---
 
-### TODO:
+## What's in the box?
+- Generators:
+  - Base app
+  - View component (base component)
+  - Child component
+  - Routing
+  - Mixins
 
-- **Core**
-- [x] Views (with routes and router)
-- [x] Components
-- [x] Routes
-- [x] Styles
-- [x] Mixins
+- Modules other than React:
+  - [Bemmer](https://www.npmjs.com/package/bemmer-node) - Create BEM with ease
+  - [lodash](https://www.npmjs.com/package/lodash) - The missing standard lib
+  - [moment](https://www.npmjs.com/package/moment) - Parse, validate, manipulate and display dates
+  - [React Mini Router](https://www.npmjs.com/package/react-mini-router) - Easy routing
+  - [Redux](https://www.npmjs.com/package/redux) - Functional flux store for your data
+
+## What's missing:
+
+- **Tests**
 
 - **Redux**
 - [ ] Models
 - [ ] Reducers
 - [ ] Stores
 - [ ] Middleware
+
+- **Electron**
 
 ---
 
@@ -100,7 +112,7 @@ With custom folder name
 
 **Generate a component [full]**
 
-*NB: Components are placed in components/[componentName]/index.coffee by default*
+*NB: Components are placed in components/[componentFolderName]/[componentName].coffee by default*
 
 ```shell
   ./fp g --component --[componentName] --folder [componentFolderName]
