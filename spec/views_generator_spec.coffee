@@ -57,3 +57,59 @@ describe('Generating Routes', ->
   )
 
 )
+
+describe('Generating Component', ->
+
+  it('Copies the Component file slim', ->
+    testable.copyComponent('test', 'test2', true)
+    testDirectory = '../assets/scripts/components/test2/test.coffee'
+    assert pathExists(testDirectory) == true
+  )
+
+  it('Copies the slim template when requested', ->
+    testable.copyComponent('test', 'test2', true)
+    componentTestFile = '../assets/scripts/components/test2/test.coffee'
+    fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
+      if (err)
+        console.error(err)
+      assert data.match("componentWillMount") == false
+    )
+  )
+
+  it('Copies the Component file full', ->
+    testable.copyComponent('test', 'test3', false)
+    testDirectory = '../assets/scripts/components/test3/test.coffee'
+    assert pathExists(testDirectory) == true
+  )
+
+  it('Copies the full template when requested', ->
+    testable.copyComponent('test', 'test3', false)
+    componentTestFile = '../assets/scripts/components/test3/test.coffee'
+    fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
+      if (err)
+        console.error(err)
+      assert data.match("componentWillMount") == true
+    )
+  )
+
+)
+
+describe('Generating Style', ->
+
+  it('Copies style file', ->
+    testable.copyStyle('test4')
+    testDirectory = '../assets/styles/components/test4.sass'
+    assert pathExists(testDirectory) == true
+  )
+
+  it('Generates an import for the index sass file', ->
+    testable.updateStyles('test4')
+    componentTestFile = '../assets/styles/index.sass'
+    fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
+      if (err)
+        console.error(err)
+      assert data.match("@import './components/test4.sass'") == false
+    )
+  )
+
+)
