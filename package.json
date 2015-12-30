@@ -8,8 +8,6 @@
   },
   "main": "index.js",
   "scripts": {
-    "gulp": "gulp",
-    "test": "echo \"Error!\" && exit 1",
     "deploy": "NODE_ENV=production webpack -p --config config/webpack.production.config.js",
     "app": "webpack-dev-server --devtool eval --progress --colors --host 0.0.0.0 --config config/webpack.config.js"
   },
