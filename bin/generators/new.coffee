@@ -33,7 +33,7 @@ module.exports =
 
   copyIndex: ->
     @copyFile('../../templates/index.html', '../../index.html')
-    @copyFile('../../templates/index.html', '../../dist/index.html')
+    @copyFile('../../templates/index-production.html', '../../dist/index.html')
 
   updatePackage: (appName, author, ghUser, email) ->
     fs.readFile(path.resolve(__dirname, "../../package.json"), 'utf8', (err, data) ->
