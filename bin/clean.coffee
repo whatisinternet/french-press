@@ -1,7 +1,9 @@
 del = require('del')
+__ = require('./logger.coffee')
 
 module.exports = ->
-  return del([
+  __(action: 'Clean', state: 'Cleaning')
+  del([
     'dist/images/*',
     'dist/*',
     'dist',
@@ -17,3 +19,4 @@ module.exports = ->
     'config',
     'index.html',
   ])
+  __(action: 'Clean', state: 'cleaned', status: 'success')
