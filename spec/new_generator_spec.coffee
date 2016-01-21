@@ -74,7 +74,7 @@ describe('Generating a new app', ->
   )
 
   it('generates a mixin folder', ->
-    testDirectory = '../assets/scripts/mixins/'
+    testDirectory = '../assets/scripts/mixins'
     assert pathExists(testDirectory) == true
   )
 
