@@ -1,10 +1,10 @@
 # French Press
 ---
 
-An opinionated ReactJs + Webpack generator.
+An opinionated ReactJs + Webpack generator for CoffeeScript.
 
-![](https://raw.github.com/whatisinternet/french-press/master/logo.png)
-
+> ![](https://raw.github.com/whatisinternet/french-press/master/logo.png)
+![](https://pixabay.com/static/uploads/photo/2013/07/13/11/56/coffee-159007_960_720.png)
 ---
 
 ## What's in the box?
@@ -55,7 +55,7 @@ An opinionated ReactJs + Webpack generator.
 
 ### Usage
 
-#### Reset
+#### Total reset
 :bangbang: This will remove all generated content in your project use with extreme caution :bangbang:
 ```shell
   ./fp clean
@@ -63,14 +63,14 @@ An opinionated ReactJs + Webpack generator.
 
 ---
 
-#### Run
+#### Run as local server
 ```shell
   ./fp run
 ```
 
 ---
 
-#### Compile
+#### Compile for production
 ```shell
   ./fp build
 ```
