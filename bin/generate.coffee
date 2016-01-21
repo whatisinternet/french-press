@@ -32,7 +32,6 @@ processArgsApp= () ->
 processArgsView = ->
   baseIndex = process.argv.indexOf('--view')
   isSlim = if process.argv.indexOf('--slim') == -1 then false else true
-  console.log isSlim
 
   return unless baseIndex > -1
   functionName = process.argv[baseIndex + 1].replace('--', '')
