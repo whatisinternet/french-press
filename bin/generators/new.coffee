@@ -33,8 +33,16 @@ copyIndex = ->
   copyFile('../../templates/index.html', '../../index.html')
   copyFile('../../templates/index-production.html', '../../dist/index.html')
 
+createMixinFolder = ->
+  try
+    fs.mkdirSync(path.resolve(__dirname, '../../assets'))
+  try
+    fs.mkdirSync(path.resolve(__dirname, '../../assets/scripts'))
+  try
+    fs.mkdirSync(path.resolve(__dirname, '../../assets/scripts/mixins'))
+
 copyMixinFolder = ->
-  copyFile('../../templates/scripts/mixins', '../../assets/scripts/mixins')
+  copyFile('../../templates/scripts/mixins', '../../assets/scripts/mixins/')
 
 updatePackage = (appName, author, ghUser, email) ->
   fs.readFile(path.resolve(__dirname, "../../package.json"), 'utf8', (err, data) ->
@@ -76,6 +84,7 @@ module.exports =
     copyBaseApp()
     copyBaseStyle()
     copyIndex()
+    createMixinFolder()
     copyMixinFolder()
 
   newApp: (appName, ghUser, author, email) ->
