@@ -43,16 +43,6 @@ An opinionated ReactJs + Webpack generator.
   - [React Mini Router](https://www.npmjs.com/package/react-mini-router) - Easy routing
   - [Redux](https://www.npmjs.com/package/redux) - Functional flux store for your data
 
-## What's missing:
-
-- **Redux**
-- [ ] Models
-- [ ] Reducers
-- [ ] Stores
-- [ ] Middleware
-
-- **Electron**
-
 ---
 
 ### Install Requirements
@@ -82,7 +72,7 @@ An opinionated ReactJs + Webpack generator.
 
 #### Compile
 ```shell
-  ./fp compile
+  ./fp build
 ```
 
 ---
