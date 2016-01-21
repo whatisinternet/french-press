@@ -1,9 +1,3 @@
-# Hacking out webpack
-React = React || require('react')
-ReactDOM = ReactDOM || require('react-dom')
-Bemmer = Bemmer || require('bemmer-node/bemmer-class')
-_ = _ || require('lodash')
-
 {div}  = React.DOM
 
 module.exports = React.createFactory React.createClass
