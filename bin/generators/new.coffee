@@ -34,7 +34,7 @@ copyIndex = ->
   copyFile('../../templates/index-production.html', '../../dist/index.html')
 
 copyMixinFolder = ->
-  copyFile('../../templates/scripts/mixins/', '../../assets/scripts/mixins/')
+  copyFile('../../templates/scripts/mixins', '../../assets/scripts/mixins')
 
 updatePackage = (appName, author, ghUser, email) ->
   fs.readFile(path.resolve(__dirname, "../../package.json"), 'utf8', (err, data) ->
