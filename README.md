@@ -3,8 +3,7 @@
 
 An opinionated ReactJs + Webpack generator for CoffeeScript.
 
-> ![](https://raw.github.com/whatisinternet/french-press/master/logo.png)
-![](https://pixabay.com/static/uploads/photo/2013/07/13/11/56/coffee-159007_960_720.png)
+<img src="https://pixabay.com/static/uploads/photo/2013/07/13/11/56/coffee-159007_960_720.png" alt="A french press" align="right"/>
 ---
 
 ## What's in the box?
