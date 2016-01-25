@@ -24,6 +24,7 @@ module.exports =
     @createComponentMethod(functionName, componentFolder)
     @createComponent(functionName, componentFolder)
     @copyStyle(componentFolder)
+    @updateStyle(functionName)
     @updateStyles(componentFolder)
 
 
@@ -31,6 +32,7 @@ module.exports =
     @copyComponent(functionName, componentFolder, slim)
     @createComponent(functionName, componentFolder)
     @copyStyle(componentFolder)
+    @updateStyle(functionName)
     @updateStyles(componentFolder)
 
 
@@ -70,6 +72,13 @@ module.exports =
         console.error(err)
     )
 
+  updateStyle: (componentFolder) ->
+    imprt = ".#{componentFolder}"
+
+    fs.appendFile(path.resolve(__dirname, "../../assets/styles/components/#{componentFolder}.sass"), imprt, (err) ->
+      if (err)
+        console.error(err)
+    )
 
   updateStyles: (componentFolder) ->
     imprt = "@import './components/#{componentFolder}.sass'\n"
