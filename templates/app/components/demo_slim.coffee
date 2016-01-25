@@ -13,5 +13,7 @@ module.exports = React.createFactory React.createClass
   render: ->
     {} = @props
 
-    div {},
+    bem = new Bemmer(block: 'demo')
+
+    div className: bem.with(element: '', modifiers: {}),
       "Hello, demo!"
