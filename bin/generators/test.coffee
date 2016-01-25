@@ -23,11 +23,11 @@ copySetup = ->
 copyTest = (functionName, componentFolder) ->
   fileName = if componentFolder == functionName then 'index' else functionName
   copyFile('../../templates/test/demo_spec.coffee',
-  "../../test/scripts/components/#{componentFolder}/#{fileName}.coffee")
+  "../../test/components/#{componentFolder}/#{fileName}.coffee")
 
 createTest = (functionName, componentFolder) ->
   fileName = if componentFolder == functionName then 'index' else functionName
-  fs.readFile(path.resolve(__dirname, "../../test/scripts/components/#{componentFolder}/#{fileName}.coffee"), 'utf8', (err, data) ->
+  fs.readFile(path.resolve(__dirname, "../../test/components/#{componentFolder}/#{fileName}.coffee"), 'utf8', (err, data) ->
     if (err)
       console.error(err)
 
@@ -35,7 +35,7 @@ createTest = (functionName, componentFolder) ->
     result = result.replace(/demoFile/g, "#{fileName}")
     result = result.replace(/demo/g, "#{functionName}")
 
-    fs.writeFile(path.resolve(__dirname, "../../test/scripts/components/#{componentFolder}/#{fileName}.coffee"), result, (err) ->
+    fs.writeFile(path.resolve(__dirname, "../../test/components/#{componentFolder}/#{fileName}.coffee"), result, (err) ->
       if (err)
         console.error(err)
     )

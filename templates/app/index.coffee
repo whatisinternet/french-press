@@ -1,6 +1,6 @@
-require './styles/index'
+require '../assets/styles/index'
 
-App = require("./scripts/app.coffee")
+App = require("./application.coffee")
 
 document.addEventListener "DOMContentLoaded", (e) ->
   ReactDOM.render(
