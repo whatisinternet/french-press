@@ -3,7 +3,7 @@ var webpack = require('webpack');
 module.exports = {
 
   entry: {
-    full: './assets/index.coffee'
+    full: './app/index.coffee'
   },
 
   output: {
