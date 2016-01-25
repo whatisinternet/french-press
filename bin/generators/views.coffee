@@ -52,10 +52,10 @@ module.exports =
   copyComponent: (functionName, componentFolder, slim) ->
     fileName = if componentFolder == functionName then 'index' else functionName
     if slim
-      copyFile('../../templates/components/demo_slim.coffee',
+      copyFile('../../templates/app/components/demo_slim.coffee',
       "../../app/components/#{componentFolder}/#{fileName}.coffee")
     else
-      copyFile('../../templates/components/demo.coffee',
+      copyFile('../../templates/app/components/demo.coffee',
       "../../app/components/#{componentFolder}/#{fileName}.coffee")
 
 

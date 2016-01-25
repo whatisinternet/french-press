@@ -19,7 +19,7 @@ pathExists = (p) ->
 
 copyWebpackConfig = ->
   unless pathExists('../../config/')
-    copyFile('../../templates/webpack-config/','../../config/')
+    copyFile('../../templates/webpack-config/','../../config/application/')
 
 copyBaseApp = ->
   unless pathExists('../../app/index.coffee')
