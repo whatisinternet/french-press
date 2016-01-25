@@ -25,6 +25,7 @@ module.exports = React.createFactory React.createClass
 
   shouldComponentUpdate: (nextProps, nextState) ->
     # [nextProps, nextState]
+    true
 
   componentWillUpdate: (nextProps, nextState) ->
     # [nextProps, nextState]
