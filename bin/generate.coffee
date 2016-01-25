@@ -71,7 +71,7 @@ processArgsComponent= ->
 
 module.exports = ->
 
-  __(action: 'Generate')
+  __(action: 'Generate', state: '', message: 'started')
   type = processTypeArgs()
 
   if type == 'app'
@@ -79,19 +79,19 @@ module.exports = ->
     if process.argv.length < 5
       __(action: 'Generate APP', state: 'failed', status: 'error')
       return
-    __(action: 'Generate APP', state: 'generating')
+    __(action: 'Generate APP', state: 'generating', status: args['appName'])
     app.newApp(args['appName'], args['author'], args['ghUser'], args['email'])
     __(action: 'Generate APP', state: 'generated', status: 'success')
 
   else if type == 'view'
-    __(action: 'Generate VIEW', state: 'generating')
+    __(action: 'Generate VIEW', state: 'generating', status: args['functionName'])
     args = processArgsView()
     views.generateView(args['functionName'], args['componentFolder'], args['path'], args['slim'])
     test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate VIEW', state: 'generated', status: 'success')
 
   else if type == 'component'
-    __(action: 'Generate COMPONENT', state: 'generating')
+    __(action: 'Generate COMPONENT', state: 'generating', status: args['functionName'])
     args = processArgsComponent()
     views.generateComponent(args['functionName'], args['componentFolder'], args['slim'])
     test.generateTest(args['functionName'], args['componentFolder'])

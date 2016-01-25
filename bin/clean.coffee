@@ -2,7 +2,7 @@ del = require('del')
 __ = require('./logger.coffee')
 
 module.exports = ->
-  __(action: 'Clean', state: 'Cleaning')
+  __(action: 'Clean', state: 'Cleaning', status: '')
   del([
     'test/*',
     'test',
