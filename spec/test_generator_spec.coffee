@@ -31,13 +31,13 @@ describe('Generating tests for components', ->
   )
 
   it('generates a test for the component test/index.coffee', ->
-    componentTestFile = '../test/scripts/components/test/index.coffee'
+    componentTestFile = '../test/components/test/index.coffee'
 
     assert pathExists(componentTestFile) == true
   )
 
   it('test/index.coffee has no references to demo', ->
-    componentTestFile = '../test/scripts/components/test/index.coffee'
+    componentTestFile = '../test/components/test/index.coffee'
     fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
       if (err)
         console.error(err)
