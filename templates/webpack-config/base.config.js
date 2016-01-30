@@ -2,9 +2,11 @@ var webpack = require('webpack');
 
 module.exports = {
 
-  entry: {
-    full: './app/index.coffee'
-  },
+  entry: [
+    'webpack-dev-server/client?http://0.0.0.0:8080',
+    'webpack/hot/only-dev-server',
+    './app/index.coffee'
+  ],
 
   output: {
     path: './dist',
@@ -14,7 +16,7 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.coffee$/, loader: "coffee-loader" },
+      { test: /\.coffee$/, loaders: ["react-hot", "coffee-loader"] },
       { test: /\.(png|jpg)$/, loader: "file-loader?name=images/[name].[ext]" },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.(ttf|eot|svg)(\?v=[1-9]\.[0-9]\.[0-9])?$/, loader: "file-loader"},
@@ -31,6 +33,7 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       "React": "react",
       "ReactDOM": "react-dom",
