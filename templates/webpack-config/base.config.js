@@ -1,3 +1,4 @@
+var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
   ],
 
   output: {
-    path: './dist',
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: "app.entry.js"
   },
