@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register --recursive --require ./test/setup.coffee",
     "spec": "mocha 'spec' --compilers coffee:coffee-script/register --recursive",
-    "deploy": "NODE_ENV=production webpack -p --config config/webpack.production.config.js",
+    "deploy": "NODE_ENV=production webpack -p --config config/application/webpack.production.config.js",
     "app": "node ./config/application.js"
   },
   "author": "Josh Teeter",
