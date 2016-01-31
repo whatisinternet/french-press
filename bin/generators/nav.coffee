@@ -23,5 +23,19 @@ module.exports =
     copyFile('../../templates/test/nav/index.coffee',
     "../../test/components/nav/index.coffee")
 
-    unless pathExists("../../assets/styles/components/nav.sass")
-      copyFile('../../templates/styles/nav.sass', "../../assets/styles/components/nav.sass")
+    unless pathExists("../../assets/styles/components/index.sass")
+      copyFile('../../templates/styles/index.sass', "../../assets/styles/components/nav.sass")
+
+    imprt = ".nav\n  &__item\n    padding-left: 10px"
+
+    fs.appendFile(path.resolve(__dirname, "../../assets/styles/components/nav.sass"), imprt, (err) ->
+      if (err)
+        console.error(err)
+    )
+
+    imprt = "@import './components/nav.sass'\n"
+
+    fs.appendFile(path.resolve(__dirname, '../../assets/styles/index.sass'), imprt, (err) ->
+      if (err)
+        console.error(err)
+    )
