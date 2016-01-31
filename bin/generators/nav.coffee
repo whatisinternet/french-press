@@ -22,3 +22,6 @@ module.exports =
 
     copyFile('../../templates/test/nav/index.coffee',
     "../../test/components/nav/index.coffee")
+
+    unless pathExists("../../assets/styles/components/nav.sass")
+      copyFile('../../templates/styles/nav.sass', "../../assets/styles/components/nav.sass")
