@@ -1,6 +1,7 @@
 path = require('path')
 views = require('./generators/views.coffee')
 app = require('./generators/new.coffee')
+nav = require('./generators/nav.coffee')
 test = require('./generators/test.coffee')
 exec = require('child_process').exec
 __ = require('./logger.coffee')
@@ -89,6 +90,11 @@ module.exports = ->
     views.generateView(args['functionName'], args['componentFolder'], args['path'], args['slim'])
     test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate VIEW', state: 'generated', status: 'success')
+
+  else if type == 'nav'
+    __(action: 'Generate NAVIGATION', state: 'generating', message: "")
+    nav.generate()
+    __(action: 'Generate NAVIGATION', state: 'generated', status: 'success')
 
   else if type == 'component'
     args = processArgsComponent()
