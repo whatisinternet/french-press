@@ -10,6 +10,7 @@ processTypeArgs = ->
   return "app" unless  process.argv.indexOf('--app') == -1
   return "view" unless  process.argv.indexOf('--view') == -1
   return "component" unless  process.argv.indexOf('--component') == -1
+  return "nav" unless  process.argv.indexOf('--navigation') == -1
 
 processArgsApp= () ->
 

@@ -16,7 +16,7 @@ pathExists = (p) ->
     false
 
 module.exports =
-  generateNav: ->
+  generate: ->
     copyFile('../../templates/app/components/nav/index.coffee',
     "../../app/components/nav/index.coffee")
 
