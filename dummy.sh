@@ -7,3 +7,4 @@
 ./fp g --view --test4 --slim
 ./fp g --component --test5 --folder test4 --slim
 ./fp g --component --test6 --folder test4
+./fp g --navigation

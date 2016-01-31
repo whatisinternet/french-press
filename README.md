@@ -1,7 +1,7 @@
 # French Press
 ---
 
-An opinionated ReactJs + Webpack generator for CoffeeScript.
+An opinionated ReactJs + Webpack generator for CoffeeScript with hot reloader.
 
 <img src="https://pixabay.com/static/uploads/photo/2013/07/13/11/56/coffee-159007_960_720.png" alt="A french press" align="right"/>
 ---
@@ -26,6 +26,9 @@ An opinionated ReactJs + Webpack generator for CoffeeScript.
       - No route included
     - [Slim](#generate-a-component-slim)
       - No route included
+  - [Navigation](#generate-navigation)
+    - Comes with tests
+    - No route included
 
 - Actions:
   - [Reset](#reset)
@@ -157,6 +160,14 @@ With custom folder name
 
 ```shell
   ./fp g --component --[componentName] --folder [componentFolderName] --slim
+```
+
+---
+
+#### Generate navigation
+
+```shell
+  ./fp g --navigation
 ```
 
 ---
