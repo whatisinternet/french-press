@@ -24,17 +24,17 @@ describe('Generating a new app', ->
   )
 
   it('generates a base webpack config', ->
-    testDirectory = '../config/base.config.js'
+    testDirectory = '../config/application/base.config.js'
     assert pathExists(testDirectory) == true
   )
 
   it('generates a dev webpack config', ->
-    testDirectory = '../config/webpack.config.js'
+    testDirectory = '../config/application/webpack.config.js'
     assert pathExists(testDirectory) == true
   )
 
   it('generates a production webpack config', ->
-    testDirectory = '../config/webpack.production.config.js'
+    testDirectory = '../config/application/webpack.production.config.js'
     assert pathExists(testDirectory) == true
   )
 
@@ -43,8 +43,13 @@ describe('Generating a new app', ->
     assert pathExists(testDirectory) == true
   )
 
+  it('generates the base app directory', ->
+    testDirectory = '../app/'
+    assert pathExists(testDirectory) == true
+  )
+
   it('generates the base app.coffee', ->
-    testDirectory = '../assets/index.coffee'
+    testDirectory = '../app/index.coffee'
     assert pathExists(testDirectory) == true
   )
 
@@ -74,7 +79,7 @@ describe('Generating a new app', ->
   )
 
   it('generates a mixin folder', ->
-    testDirectory = '../assets/scripts/mixins'
+    testDirectory = '../app/mixins'
     assert pathExists(testDirectory) == true
   )
 

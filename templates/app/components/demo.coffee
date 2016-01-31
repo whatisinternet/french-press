@@ -11,7 +11,7 @@ module.exports = React.createFactory React.createClass
     null
 
   getInitialState: ->
-    #@setState: null
+    #@setState null
     null
 
   componentWillMount: ->
@@ -25,6 +25,7 @@ module.exports = React.createFactory React.createClass
 
   shouldComponentUpdate: (nextProps, nextState) ->
     # [nextProps, nextState]
+    true
 
   componentWillUpdate: (nextProps, nextState) ->
     # [nextProps, nextState]
@@ -39,5 +40,7 @@ module.exports = React.createFactory React.createClass
   render: ->
     {} = @props
 
-    div {},
+    bem = new Bemmer(block: 'demo')
+
+    div className: bem.with(element: '', modifiers: {}),
       "Hello, demo!"

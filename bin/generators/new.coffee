@@ -19,11 +19,11 @@ pathExists = (p) ->
 
 copyWebpackConfig = ->
   unless pathExists('../../config/')
-    copyFile('../../templates/webpack-config/','../../config/')
+    copyFile('../../templates/webpack-config/','../../config/application/')
 
 copyBaseApp = ->
-  unless pathExists('../../assets/index.coffee')
-    copyFile('../../templates/assets/index.coffee', '../../assets/index.coffee')
+  unless pathExists('../../app/index.coffee')
+    copyFile('../../templates/app/index.coffee', '../../app/index.coffee')
 
 copyBaseStyle = ->
   unless pathExists('../../assets/styles/')
@@ -35,14 +35,12 @@ copyIndex = ->
 
 createMixinFolder = ->
   try
-    fs.mkdirSync(path.resolve(__dirname, '../../assets'))
+    fs.mkdirSync(path.resolve(__dirname, '../../app'))
   try
-    fs.mkdirSync(path.resolve(__dirname, '../../assets/scripts'))
-  try
-    fs.mkdirSync(path.resolve(__dirname, '../../assets/scripts/mixins'))
+    fs.mkdirSync(path.resolve(__dirname, '../../app/mixins'))
 
 copyMixinFolder = ->
-  copyFile('../../templates/scripts/mixins', '../../assets/scripts/mixins/')
+  copyFile('../../templates/app/mixins', '../../app/mixins/')
 
 updatePackage = (appName, author, ghUser, email) ->
   fs.readFile(path.resolve(__dirname, "../../package.json"), 'utf8', (err, data) ->

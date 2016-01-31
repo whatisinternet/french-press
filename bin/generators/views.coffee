@@ -24,6 +24,7 @@ module.exports =
     @createComponentMethod(functionName, componentFolder)
     @createComponent(functionName, componentFolder)
     @copyStyle(componentFolder)
+    @updateStyle(functionName)
     @updateStyles(componentFolder)
 
 
@@ -31,17 +32,18 @@ module.exports =
     @copyComponent(functionName, componentFolder, slim)
     @createComponent(functionName, componentFolder)
     @copyStyle(componentFolder)
+    @updateStyle(functionName)
     @updateStyles(componentFolder)
 
 
   copyRoutes: ->
-    unless pathExists('../../assets/config/routes.coffee')
-      copyFile('../../templates/config/','../../assets/config/')
+    unless pathExists('../../config/routes.coffee')
+      copyFile('../../templates/config/','../../config/')
 
 
   copyRouter: ->
-    unless pathExists('../../assets/scripts/app.coffee')
-      copyFile('../../templates/scripts/app.coffee', '../../assets/scripts/app.coffee')
+    unless pathExists('../../app/application.coffee')
+      copyFile('../../templates/app/application.coffee', '../../app/application.coffee')
 
 
   copyStyle: (componentFolder) ->
@@ -52,11 +54,11 @@ module.exports =
   copyComponent: (functionName, componentFolder, slim) ->
     fileName = if componentFolder == functionName then 'index' else functionName
     if slim
-      copyFile('../../templates/scripts/demo_slim.coffee',
-      "../../assets/scripts/components/#{componentFolder}/#{fileName}.coffee")
+      copyFile('../../templates/app/components/demo_slim.coffee',
+      "../../app/components/#{componentFolder}/#{fileName}.coffee")
     else
-      copyFile('../../templates/scripts/demo.coffee',
-      "../../assets/scripts/components/#{componentFolder}/#{fileName}.coffee")
+      copyFile('../../templates/app/components/demo.coffee',
+      "../../app/components/#{componentFolder}/#{fileName}.coffee")
 
 
   createRoute: (routePath, functionName) ->
@@ -65,11 +67,18 @@ module.exports =
       else
         "  '/" + routePath + "': '" + functionName  + "'\n"
 
-    fs.appendFile(path.resolve(__dirname, '../../assets/config/routes.coffee'), route, (err) ->
+    fs.appendFile(path.resolve(__dirname, '../../config/routes.coffee'), route, (err) ->
       if (err)
         console.error(err)
     )
 
+  updateStyle: (componentFolder) ->
+    imprt = ".#{componentFolder}"
+
+    fs.appendFile(path.resolve(__dirname, "../../assets/styles/components/#{componentFolder}.sass"), imprt, (err) ->
+      if (err)
+        console.error(err)
+    )
 
   updateStyles: (componentFolder) ->
     imprt = "@import './components/#{componentFolder}.sass'\n"
@@ -82,13 +91,13 @@ module.exports =
 
   createComponent: (functionName, componentFolder) ->
     fileName = if componentFolder == functionName then 'index' else functionName
-    fs.readFile(path.resolve(__dirname, "../../assets/scripts/components/#{componentFolder}/#{fileName}.coffee"), 'utf8', (err, data) ->
+    fs.readFile(path.resolve(__dirname, "../../app/components/#{componentFolder}/#{fileName}.coffee"), 'utf8', (err, data) ->
       if (err)
         console.error(err)
 
       result = data.replace(/demo/g, "#{functionName}")
 
-      fs.writeFile(path.resolve(__dirname, "../../assets/scripts/components/#{componentFolder}/#{fileName}.coffee"), result, (err) ->
+      fs.writeFile(path.resolve(__dirname, "../../app/components/#{componentFolder}/#{fileName}.coffee"), result, (err) ->
         if (err)
           console.error(err)
       )
@@ -98,7 +107,7 @@ module.exports =
   createComponentMethod: (functionName, componentFolder) ->
     fileName = if componentFolder == functionName then 'index' else functionName
     fn = "  #{functionName}: ->\n    require('./components/#{componentFolder}/#{fileName}') {}\n\n"
-    fs.appendFile(path.resolve(__dirname, '../../assets/scripts/app.coffee'), fn, (err) ->
+    fs.appendFile(path.resolve(__dirname, '../../app/application.coffee'), fn, (err) ->
       if (err)
         console.error(err)
     )

@@ -16,19 +16,19 @@ describe('Generating Routes', ->
 
   it('Copies the route file', ->
     testable.copyRoutes()
-    testDirectory = '../assets/config/routes.coffee'
+    testDirectory = '../config/routes.coffee'
     assert pathExists(testDirectory) == true
   )
 
   it('Copies the router', ->
     testable.copyRouter()
-    testDirectory = '../assets/scripts/app.coffee'
+    testDirectory = '../app/application.coffee'
     assert pathExists(testDirectory) == true
   )
 
   it('Creates a default route', ->
     testable.createRoute('root', 'test2')
-    componentTestFile = '../assets/config/routes.coffee'
+    componentTestFile = '../config/routes.coffee'
     fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
       if (err)
         console.error(err)
@@ -38,7 +38,7 @@ describe('Generating Routes', ->
 
   it('Creates a route', ->
     testable.createRoute('test', 'test2')
-    componentTestFile = '../assets/config/routes.coffee'
+    componentTestFile = '../config/routes.coffee'
     fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
       if (err)
         console.error(err)
@@ -48,7 +48,7 @@ describe('Generating Routes', ->
 
   it('Creates a route method', ->
     testable.createComponentMethod('test', 'test2')
-    componentTestFile = '../assets/config/routes.coffee'
+    componentTestFile = '../app/application.coffee'
     fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
       if (err)
         console.error(err)
@@ -62,13 +62,13 @@ describe('Generating Component', ->
 
   it('Copies the Component file slim', ->
     testable.copyComponent('test', 'test2', true)
-    testDirectory = '../assets/scripts/components/test2/test.coffee'
+    testDirectory = '../app/components/test2/test.coffee'
     assert pathExists(testDirectory) == true
   )
 
   it('Copies the slim template when requested', ->
     testable.copyComponent('test', 'test2', true)
-    componentTestFile = '../assets/scripts/components/test2/test.coffee'
+    componentTestFile = '../app/components/test2/test.coffee'
     fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
       if (err)
         console.error(err)
@@ -78,13 +78,13 @@ describe('Generating Component', ->
 
   it('Copies the Component file full', ->
     testable.copyComponent('test', 'test3', false)
-    testDirectory = '../assets/scripts/components/test3/test.coffee'
+    testDirectory = '../app/components/test3/test.coffee'
     assert pathExists(testDirectory) == true
   )
 
   it('Copies the full template when requested', ->
     testable.copyComponent('test', 'test3', false)
-    componentTestFile = '../assets/scripts/components/test3/test.coffee'
+    componentTestFile = '../app/components/test3/test.coffee'
     fs.readFile(path.resolve(__dirname, componentTestFile), 'utf8', (err, data) ->
       if (err)
         console.error(err)

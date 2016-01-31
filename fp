@@ -20,7 +20,16 @@ switch (process.argv[2]) {
   case 'build':
     require('./bin/build.coffee')();
     break;
+  case 'compile':
+    require('./bin/build.coffee')();
+    break;
   case 'run':
+    require('./bin/run.coffee')();
+    break;
+  case 'start':
+    require('./bin/run.coffee')();
+    break;
+  case 'server':
     require('./bin/run.coffee')();
     break;
   case 'test':

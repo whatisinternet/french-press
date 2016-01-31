@@ -2,20 +2,18 @@ del = require('del')
 __ = require('./logger.coffee')
 
 module.exports = ->
-  __(action: 'Clean', state: 'Cleaning')
+  __(action: 'Clean', state: 'Cleaning', status: '')
   del([
     'test/*',
     'test',
     'dist/images/*',
     'dist/*',
     'dist',
-    'assets/config/*',
-    'assets/config',
-    'assets/scripts/components/app.coffee',
-    'assets/scripts/components/*.coffee',
-    'assets/scripts/components',
-    'assets/scripts/*',
-    'assets/scripts',
+    'app/components/app.coffee',
+    'app/components/*.coffee',
+    'app/components',
+    'app/*',
+    'app',
     'assets',
     'config/*',
     'config',

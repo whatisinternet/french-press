@@ -1,6 +1,7 @@
 path = require('path')
 views = require('./generators/views.coffee')
 app = require('./generators/new.coffee')
+nav = require('./generators/nav.coffee')
 test = require('./generators/test.coffee')
 exec = require('child_process').exec
 __ = require('./logger.coffee')
@@ -9,6 +10,7 @@ processTypeArgs = ->
   return "app" unless  process.argv.indexOf('--app') == -1
   return "view" unless  process.argv.indexOf('--view') == -1
   return "component" unless  process.argv.indexOf('--component') == -1
+  return "nav" unless  process.argv.indexOf('--navigation') == -1
 
 processArgsApp= () ->
 
@@ -71,7 +73,7 @@ processArgsComponent= ->
 
 module.exports = ->
 
-  __(action: 'Generate')
+  __(action: 'Generate', state: '', message: 'started')
   type = processTypeArgs()
 
   if type == 'app'
@@ -79,20 +81,25 @@ module.exports = ->
     if process.argv.length < 5
       __(action: 'Generate APP', state: 'failed', status: 'error')
       return
-    __(action: 'Generate APP', state: 'generating')
+    __(action: 'Generate APP', state: 'generating', message: args['appName'])
     app.newApp(args['appName'], args['author'], args['ghUser'], args['email'])
     __(action: 'Generate APP', state: 'generated', status: 'success')
 
   else if type == 'view'
-    __(action: 'Generate VIEW', state: 'generating')
     args = processArgsView()
+    __(action: 'Generate VIEW', state: 'generating', message: args['functionName'])
     views.generateView(args['functionName'], args['componentFolder'], args['path'], args['slim'])
     test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate VIEW', state: 'generated', status: 'success')
 
+  else if type == 'nav'
+    __(action: 'Generate NAVIGATION', state: 'generating', message: "")
+    nav.generate()
+    __(action: 'Generate NAVIGATION', state: 'generated', status: 'success')
+
   else if type == 'component'
-    __(action: 'Generate COMPONENT', state: 'generating')
     args = processArgsComponent()
+    __(action: 'Generate COMPONENT', state: 'generating', message: args['functionName'])
     views.generateComponent(args['functionName'], args['componentFolder'], args['slim'])
     test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate COMPONENT', state: 'generated', status: 'success')
