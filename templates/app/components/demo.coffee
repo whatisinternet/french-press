@@ -11,7 +11,7 @@ module.exports = React.createFactory React.createClass
     null
 
   getInitialState: ->
-    #@setState: null
+    #@setState null
     null
 
   componentWillMount: ->
