@@ -16,10 +16,10 @@ module.exports = React.createFactory React.createClass
 
     bem = new Bemmer(block: 'nav')
 
-    div className: bem.with(element: 'nav'),
+    div className: bem.classes(),
       _.map routeTitles, (r, idx) ->
         a
           key: idx
-          className: bem.with(element: 'nav-item')
+          className: bem.with(element: 'item')
           href: "#{_.keys(routes)[idx]}",
           _.startCase r
