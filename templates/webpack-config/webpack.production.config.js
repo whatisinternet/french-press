@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var base = require('./base.config.js');
 base.entry = {full: './app/index.coffee'}
 base.output = {path: './dist', publicPath: '/', filename: 'app.entry.js'}
