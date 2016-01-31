@@ -11,7 +11,7 @@
     "test": "mocha --compilers coffee:coffee-script/register --recursive --require ./test/setup.coffee",
     "spec": "mocha 'spec' --compilers coffee:coffee-script/register --recursive",
     "deploy": "NODE_ENV=production webpack -p --config config/webpack.production.config.js",
-    "app": "webpack-dev-server --devtool eval --progress --colors --host 0.0.0.0 --config config/application/webpack.config.js"
+    "app": "node ./config/application.coffee"
   },
   "author": "Josh Teeter",
   "license": "BSD 2-Clause",
