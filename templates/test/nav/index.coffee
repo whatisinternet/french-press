@@ -2,6 +2,7 @@ assert = require('assert')
 React = require('react')
 Testable = require('../../../app/components/nav/index.coffee')
 TestUtils = require('react-addons-test-utils')
+routes = require('../../../config/routes.coffee')
 
 describe('Navigation component', ->
 
@@ -10,21 +11,20 @@ describe('Navigation component', ->
       Testable {}
     )
 
-    contents = TestUtils.scryRenderedComponentsWithType(
-      renderedComponent, 'a'
+    contents = TestUtils.scryRenderedDOMComponentsWithClass(
+      renderedComponent, 'nav__item'
     )
 
     @elements = contents
-
-    @routes = require('../../../config/routes')
   )
 
-  it("each element contains a route", ->
+  it("Each element contains a route", ->
     _.each @elements, (element) ->
-      assert(_.includes(_.values(@routes), element.innerHTML))
+      assert(_.includes(_.values(routes), element.innerHTML.toLowerCase().replace(" ", "")))
   )
 
-  it("should contain the same number of elements as there are routes", ->
-    assert(@routes.length == @elements.length)
+  it("Should contain the same number of elements as there are routes", ->
+    assert(_.values(routes).length == @elements.length)
   )
 )
+
