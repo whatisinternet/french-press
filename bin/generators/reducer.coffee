@@ -39,8 +39,8 @@ module.exports =
         console.error(err)
 
       result = data.replace("DEMO", "#{reducerName.toUpperCase()}")
-      result = result.replace("demo", "#{reducerName}")
-      result = result.replace("demoMiddleware", "#{middlewareName}")
+      result = result.replace(new RegExp('demo', 'g'), "#{reducerName}")
+      result = result.replace(new RegExp('demoMiddleware', 'g'), "#{middlewareName}")
 
       fs.writeFile(path.resolve(__dirname, "../../app/reducers/#{reducerName}.coffee"), result, (err) ->
         if (err)
