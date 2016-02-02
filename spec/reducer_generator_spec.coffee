@@ -15,7 +15,7 @@ pathExists = (p) ->
 describe('Generating Reducer', ->
 
   it('Copies the reducer file', ->
-    testable.generateReducer('test', 'test')
+    testable.generateReducer('test')
     testDirectory = '../app/reducers/test.coffee'
     assert pathExists(testDirectory) == true
   )

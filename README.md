@@ -183,19 +183,19 @@ With custom folder name
 #### Generate reducer with middleware
 
 ```shell
-  ./fp g --reducer --middleware
+  ./fp g --reducer --middleware --store [storeName]
 ```
 
 #### Generate reducer without middleware
 
 ```shell
-  ./fp g --reducer
+  ./fp g --reducer --store [storeName]
 ```
 
 #### Generate middleware
 
 ```shell
-  ./fp g --middleware
+  ./fp g --middleware --name [middlewareName] --store [storeName]
 ```
 
 ---

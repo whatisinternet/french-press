@@ -11,8 +11,10 @@ processTypeArgs = ->
   return "view" unless  process.argv.indexOf('--view') == -1
   return "component" unless  process.argv.indexOf('--component') == -1
   return "nav" unless  process.argv.indexOf('--navigation') == -1
+  return "reducer" unless  process.argv.indexOf('--reducer') == -1
+  return "middleware" unless  process.argv.indexOf('--middleware') == -1
 
-processArgsApp= () ->
+processArgsApp = ->
 
   appNameIndex = process.argv.indexOf('--appName')
   appName = process.argv[appNameIndex + 1]
@@ -57,7 +59,7 @@ processArgsView = ->
   componentFolder: componentFolder
   path: routePath
 
-processArgsComponent= ->
+processArgsComponent = ->
   baseIndex = process.argv.indexOf('--component')
   isSlim = if process.argv.indexOf('--slim') == -1 then false else true
 
@@ -73,6 +75,28 @@ processArgsComponent= ->
   slim: isSlim
   functionName: functionName
   componentFolder: componentFolder
+
+processArgsReducer= ->
+  baseIndex = process.argv.indexOf('--reducer')
+  hasMiddleware = if process.argv.indexOf('--middleware') == -1 then false else true
+
+  storeIndex = process.argv.indexOf('--store')
+  storeName = process.argv[storeIndex + 1]
+
+  hasMiddleware: hasMiddleware
+  storeName: storeName
+
+processArgsMiddleware= ->
+  baseIndex = process.argv.indexOf('--middleware')
+
+  storeIndex = process.argv.indexOf('--store')
+  storeName = process.argv[storeIndex + 1]
+
+  middlewareIndex = process.argv.indexOf('--name')
+  middlewareName = process.argv[middlewareIndex + 1]
+
+  storeName: storeName
+  middlewareName: middlewareName
 
 module.exports = ->
 
@@ -113,3 +137,22 @@ module.exports = ->
     views.generateComponent(args['functionName'], args['componentFolder'], args['slim'])
     test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate COMPONENT', state: 'generated', status: 'success')
+
+  else if type == 'middleware'
+    args = processArgsMiddleware()
+    __(action: 'Generate MIDDLEWARE', state: 'generating', message: args['middlewareName'])
+    middleware.generateMiddleware(args['middlewareName'], args['storeName'])
+    __(action: 'Generate MIDDLEWARE', state: 'generated', status: 'success')
+
+  else if type == 'reducer'
+    args = processArgsReducer()
+
+    if args['hasMiddleware'] == true
+      __(action: 'Generate REDUCER with MIDDLEWARE', state: 'generating', message: args['storeName'])
+      reducer.generateReducer(args['storeName'])
+      __(action: 'Generate REDUCER with MIDDLEWARE', state: 'generated', status: 'success')
+
+    else
+      __(action: 'Generate REDUCER', state: 'generating', message: args['storeName'])
+      reducer.generateReducerNoMiddleware(args['storeName'])
+      __(action: 'Generate REDUCER', state: 'generated', status: 'success')

@@ -16,22 +16,30 @@ pathExists = (p) ->
     false
 
 module.exports =
-  generateReducer: (reducerName, storeName) ->
+  generateReducer: (reducerName) ->
     @copyReducer(reducerName)
-    @updateReducer(reducerName, storeName)
+    @updateReducer(reducerName)
+
+  generateReducerNoMiddleware: (reducerName) ->
+    @copyReducerNoMiddleware(reducerName)
+    @updateReducer(reducerName)
 
   copyReducer: (reducerName) ->
+    copyFile('../../templates/app/reducers/demo_reducer_middleware.coffee',
+    "../../app/reducers/#{reducerName}.coffee")
+
+  copyReducerNoMiddleware: (reducerName) ->
     copyFile('../../templates/app/reducers/demo_reducer.coffee',
     "../../app/reducers/#{reducerName}.coffee")
 
 
-  updateReducer: (reducerName, storeName) ->
+  updateReducer: (reducerName) ->
     fs.readFile(path.resolve(__dirname, "../../app/reducers/#{reducerName}.coffee"), 'utf8', (err, data) ->
       if (err)
         console.error(err)
 
-      result = data.replace("DEMO", "#{storeName.toUpperCase()}")
-      result = result.replace("demo", "#{storeName}")
+      result = data.replace("DEMO", "#{reducerName.toUpperCase()}")
+      result = result.replace("demo", "#{reducerName}")
 
       fs.writeFile(path.resolve(__dirname, "../../app/reducers/#{reducerName}.coffee"), result, (err) ->
         if (err)
