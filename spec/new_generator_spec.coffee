@@ -11,6 +11,22 @@ pathExists = (p) ->
   catch e
     false
 
+describe('Generating a new app with redux', ->
+  before(->
+    testable.newAppNoPackageOrReadmeRedux('test', 'test', 'test', 'test')
+  )
+
+  it('generates redux app instead of regular index', ->
+    testDirectory = '../app/index.coffee'
+    assert pathExists(testDirectory) == true
+  )
+
+  it('generates redux container', ->
+    testDirectory = '../app/containers/index.coffee'
+    assert pathExists(testDirectory) == true
+  )
+
+)
 
 describe('Generating a new app', ->
 

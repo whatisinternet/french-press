@@ -14,6 +14,10 @@ An opinionated ReactJs + Webpack generator for CoffeeScript with hot reloader.
     - Adds webpack config
     - Generates a test suite
     - Replaces refs to french-press with your own
+    - if redux
+      - Builds using a different base
+      - Adds container component
+      - Requires intervention to produce a functional app
   - View component (base component)
     - All come with tests
     - [Full](#generate-a-view-full)
@@ -29,6 +33,10 @@ An opinionated ReactJs + Webpack generator for CoffeeScript with hot reloader.
   - [Navigation](#generate-navigation)
     - Comes with tests
     - No route included
+  - Reducers
+    - [With middleware](#generate-reducer-with-middleware)
+    - [Without middleware](#generate-reducer-without-middleware)
+  - [Middleware](#generate-middleware)
 
 - Actions:
   - [Reset](#reset)
@@ -109,6 +117,12 @@ An opinionated ReactJs + Webpack generator for CoffeeScript with hot reloader.
 
 *You will want to `rm -rf .git` and `git init` before running this command*
 
+##### With redux
+```shell
+  ./fp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com] --redux
+```
+
+##### Without redux
 ```shell
   ./fp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
 ```
@@ -168,6 +182,27 @@ With custom folder name
 
 ```shell
   ./fp g --navigation
+```
+
+#### Generate reducer with middleware
+
+```shell
+  ./fp g --reducer --middleware --store [storeName]
+```
+
+#### Generate reducer without middleware
+
+```shell
+  ./fp g --reducer --store [storeName]
+```
+
+#### Generate middleware
+
+- This is just a shell. It will require some work to complete a functional
+  middleware module
+
+```shell
+  ./fp g --middleware --name [middlewareName] --store [storeName]
 ```
 
 ---

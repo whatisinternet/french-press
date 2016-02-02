@@ -25,6 +25,14 @@ copyBaseApp = ->
   unless pathExists('../../app/index.coffee')
     copyFile('../../templates/app/index.coffee', '../../app/index.coffee')
 
+copyBaseAppRedux = ->
+  unless pathExists('../../app/index.coffee')
+    copyFile('../../templates/app/index-redux.coffee', '../../app/index.coffee')
+
+copyIndexContainer = ->
+  unless pathExists('../../app/containers/application.coffee')
+    copyFile('../../templates/app/containers/application.coffee', '../../app/containers/index.coffee')
+
 copyBaseStyle = ->
   unless pathExists('../../assets/styles/')
     copyFile('../../templates/styles/', '../../assets/styles/')
@@ -77,6 +85,15 @@ updateReadMe = (appName, author, ghUser, email) ->
   )
 
 module.exports =
+  newAppNoPackageOrReadmeRedux: (appName, ghUser, author, email) ->
+    copyWebpackConfig()
+    copyBaseAppRedux()
+    copyIndexContainer()
+    copyBaseStyle()
+    copyIndex()
+    createMixinFolder()
+    copyMixinFolder()
+
   newAppNoPackageOrReadme: (appName, ghUser, author, email) ->
     copyWebpackConfig()
     copyBaseApp()
@@ -84,6 +101,11 @@ module.exports =
     copyIndex()
     createMixinFolder()
     copyMixinFolder()
+
+  newAppRedux: (appName, ghUser, author, email) ->
+    @newAppNoPackageOrReadmeRedux(appName, ghUser, author, email)
+    updatePackage(appName, author, ghUser, email)
+    updateReadMe(appName, author, ghUser, email)
 
   newApp: (appName, ghUser, author, email) ->
     @newAppNoPackageOrReadme(appName, ghUser, author, email)

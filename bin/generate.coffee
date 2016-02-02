@@ -3,6 +3,8 @@ views = require('./generators/views.coffee')
 app = require('./generators/new.coffee')
 nav = require('./generators/nav.coffee')
 test = require('./generators/test.coffee')
+reducer = require('./generators/reducer.coffee')
+middleware = require('./generators/middleware.coffee')
 exec = require('child_process').exec
 __ = require('./logger.coffee')
 
@@ -11,8 +13,10 @@ processTypeArgs = ->
   return "view" unless  process.argv.indexOf('--view') == -1
   return "component" unless  process.argv.indexOf('--component') == -1
   return "nav" unless  process.argv.indexOf('--navigation') == -1
+  return "reducer" unless  process.argv.indexOf('--reducer') == -1
+  return "middleware" unless  process.argv.indexOf('--middleware') == -1
 
-processArgsApp= () ->
+processArgsApp = ->
 
   appNameIndex = process.argv.indexOf('--appName')
   appName = process.argv[appNameIndex + 1]
@@ -26,10 +30,13 @@ processArgsApp= () ->
   emailIndex = process.argv.indexOf('--email')
   email = process.argv[emailIndex + 1]
 
+  isRedux = if process.argv.indexOf('--redux') == -1 then false else true
+
   appName: appName
   author: author
   ghUser: ghUser
   email: email
+  redux: isRedux
 
 processArgsView = ->
   baseIndex = process.argv.indexOf('--view')
@@ -54,7 +61,7 @@ processArgsView = ->
   componentFolder: componentFolder
   path: routePath
 
-processArgsComponent= ->
+processArgsComponent = ->
   baseIndex = process.argv.indexOf('--component')
   isSlim = if process.argv.indexOf('--slim') == -1 then false else true
 
@@ -71,6 +78,33 @@ processArgsComponent= ->
   functionName: functionName
   componentFolder: componentFolder
 
+processArgsReducer= ->
+  baseIndex = process.argv.indexOf('--reducer')
+  hasMiddleware = if process.argv.indexOf('--middleware') == -1 then false else true
+
+  storeIndex = process.argv.indexOf('--store')
+  storeName = process.argv[storeIndex + 1]
+
+  if hasMiddleware
+    middlewareIndex = process.argv.indexOf('--middleware')
+    middlewareName = process.argv[middlewareIndex + 1]
+
+  hasMiddleware: hasMiddleware
+  storeName: storeName
+  middlewareName: middlewareName
+
+processArgsMiddleware= ->
+  baseIndex = process.argv.indexOf('--middleware')
+
+  storeIndex = process.argv.indexOf('--store')
+  storeName = process.argv[storeIndex + 1]
+
+  middlewareIndex = process.argv.indexOf('--name')
+  middlewareName = process.argv[middlewareIndex + 1]
+
+  storeName: storeName
+  middlewareName: middlewareName
+
 module.exports = ->
 
   __(action: 'Generate', state: '', message: 'started')
@@ -81,9 +115,16 @@ module.exports = ->
     if process.argv.length < 5
       __(action: 'Generate APP', state: 'failed', status: 'error')
       return
-    __(action: 'Generate APP', state: 'generating', message: args['appName'])
-    app.newApp(args['appName'], args['author'], args['ghUser'], args['email'])
-    __(action: 'Generate APP', state: 'generated', status: 'success')
+
+    if args['redux'] == true
+      __(action: 'Generate APP with Redux', state: 'generating', message: args['appName'])
+      app.newAppRedux(args['appName'], args['author'], args['ghUser'], args['email'])
+      __(action: 'Generate APP with Redux', state: 'generated', status: 'success')
+
+    else
+      __(action: 'Generate APP', state: 'generating', message: args['appName'])
+      app.newApp(args['appName'], args['author'], args['ghUser'], args['email'])
+      __(action: 'Generate APP', state: 'generated', status: 'success')
 
   else if type == 'view'
     args = processArgsView()
@@ -103,3 +144,22 @@ module.exports = ->
     views.generateComponent(args['functionName'], args['componentFolder'], args['slim'])
     test.generateTest(args['functionName'], args['componentFolder'])
     __(action: 'Generate COMPONENT', state: 'generated', status: 'success')
+
+  else if type == 'middleware'
+    args = processArgsMiddleware()
+    __(action: 'Generate MIDDLEWARE', state: 'generating', message: args['middlewareName'])
+    middleware.generateMiddleware(args['middlewareName'], args['storeName'])
+    __(action: 'Generate MIDDLEWARE', state: 'generated', status: 'success')
+
+  else if type == 'reducer'
+    args = processArgsReducer()
+
+    if args['hasMiddleware'] == true
+      __(action: 'Generate REDUCER with MIDDLEWARE', state: 'generating', message: args['storeName'])
+      reducer.generateReducer(args['storeName'], args['middlewareName'])
+      __(action: 'Generate REDUCER with MIDDLEWARE', state: 'generated', status: 'success')
+
+    else
+      __(action: 'Generate REDUCER', state: 'generating', message: args['storeName'])
+      reducer.generateReducerNoMiddleware(args['storeName'])
+      __(action: 'Generate REDUCER', state: 'generated', status: 'success')
