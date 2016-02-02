@@ -26,10 +26,13 @@ processArgsApp= () ->
   emailIndex = process.argv.indexOf('--email')
   email = process.argv[emailIndex + 1]
 
+  isRedux = if process.argv.indexOf('--redux') == -1 then false else true
+
   appName: appName
   author: author
   ghUser: ghUser
   email: email
+  redux: isRedux
 
 processArgsView = ->
   baseIndex = process.argv.indexOf('--view')
@@ -81,9 +84,16 @@ module.exports = ->
     if process.argv.length < 5
       __(action: 'Generate APP', state: 'failed', status: 'error')
       return
-    __(action: 'Generate APP', state: 'generating', message: args['appName'])
-    app.newApp(args['appName'], args['author'], args['ghUser'], args['email'])
-    __(action: 'Generate APP', state: 'generated', status: 'success')
+
+    if args['redux'] == true
+      __(action: 'Generate APP with Redux', state: 'generating', message: args['appName'])
+      app.newAppRedux(args['appName'], args['author'], args['ghUser'], args['email'])
+      __(action: 'Generate APP with Redux', state: 'generated', status: 'success')
+
+    else
+      __(action: 'Generate APP', state: 'generating', message: args['appName'])
+      app.newApp(args['appName'], args['author'], args['ghUser'], args['email'])
+      __(action: 'Generate APP', state: 'generated', status: 'success')
 
   else if type == 'view'
     args = processArgsView()

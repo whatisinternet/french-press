@@ -29,6 +29,10 @@ An opinionated ReactJs + Webpack generator for CoffeeScript with hot reloader.
   - [Navigation](#generate-navigation)
     - Comes with tests
     - No route included
+  - Reducers
+    - [With middleware](#generate-reducer-with-middleware)
+    - [Without middleware](#generate-reducer-without-middleware)
+  - [Middleware](#generate-middleware)
 
 - Actions:
   - [Reset](#reset)
@@ -109,6 +113,12 @@ An opinionated ReactJs + Webpack generator for CoffeeScript with hot reloader.
 
 *You will want to `rm -rf .git` and `git init` before running this command*
 
+##### With redux
+```shell
+  ./fp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com] --redux
+```
+
+##### Without redux
 ```shell
   ./fp g --app --appName [AwesomeApp] --author [YourName] --ghUser [GitHubUserName] --email [some@one.com]
 ```
