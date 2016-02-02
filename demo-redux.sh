@@ -10,7 +10,7 @@ npm run spec
 ./fp g --component --test5 --folder test4 --slim
 ./fp g --component --test6 --folder test4
 ./fp g --navigation
-./fp g --reducer --middleware --store testing
 ./fp g --middleware --name testingMiddleware --store testing
+./fp g --reducer --middleware testingMiddleware --store testing
 ./fp test
 ./fp run
