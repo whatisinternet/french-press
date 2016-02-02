@@ -20,7 +20,7 @@ module.exports =
     @copyReducer(reducerName)
     @updateReducer(reducerName, storeName)
 
-  copyComponent: (reducerName) ->
+  copyReducer: (reducerName) ->
     copyFile('../../templates/app/reducers/demo_reducer.coffee',
     "../../app/reducers/#{reducerName}.coffee")
 

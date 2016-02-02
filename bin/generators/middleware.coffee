@@ -20,7 +20,7 @@ module.exports =
     @copyMiddleware(middlewareName)
     @updateMiddleware(middlewareName, storeName)
 
-  copyComponent: (middlewareName) ->
+  copyMiddleware: (middlewareName) ->
     copyFile('../../templates/app/middleware/demo_middleware.coffee',
     "../../app/middleware/#{middlewareName}.coffee")
 
