@@ -14,6 +14,10 @@ An opinionated ReactJs + Webpack generator for CoffeeScript with hot reloader.
     - Adds webpack config
     - Generates a test suite
     - Replaces refs to french-press with your own
+    - if redux
+      - Builds using a different base
+      - Adds container component
+      - Requires intervention to produce a functional app
   - View component (base component)
     - All come with tests
     - [Full](#generate-a-view-full)
@@ -193,6 +197,9 @@ With custom folder name
 ```
 
 #### Generate middleware
+
+- This is just a shell. It will require some work to complete a functional
+  middleware module
 
 ```shell
   ./fp g --middleware --name [middlewareName] --store [storeName]
