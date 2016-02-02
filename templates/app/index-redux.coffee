@@ -3,9 +3,9 @@ require '../assets/styles/index'
 ReactRedux = require('react-redux')
 Provider = ReactRedux.Provider
 
-{ store } = require('./app/reducers/index.coffee')
+{ store } = require('./reducers/index.coffee')
 
-App = require("./app/containers/index.coffee")
+App = require("./containers/index.coffee")
 
 document.addEventListener "DOMContentLoaded", (e) ->
   ReactDOM.render(

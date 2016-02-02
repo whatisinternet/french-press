@@ -16,13 +16,13 @@ pathExists = (p) ->
     false
 
 module.exports =
-  generateReducer: (reducerName) ->
+  generateReducer: (reducerName, middlewareName) ->
     @copyReducer(reducerName)
-    @updateReducer(reducerName)
+    @updateReducer(reducerName, middlewareName)
 
   generateReducerNoMiddleware: (reducerName) ->
     @copyReducerNoMiddleware(reducerName)
-    @updateReducer(reducerName)
+    @updateReducer(reducerName, reducerName)
 
   copyReducer: (reducerName) ->
     copyFile('../../templates/app/reducers/demo_reducer_middleware.coffee',
@@ -33,13 +33,14 @@ module.exports =
     "../../app/reducers/#{reducerName}.coffee")
 
 
-  updateReducer: (reducerName) ->
+  updateReducer: (reducerName, middlewareName) ->
     fs.readFile(path.resolve(__dirname, "../../app/reducers/#{reducerName}.coffee"), 'utf8', (err, data) ->
       if (err)
         console.error(err)
 
       result = data.replace("DEMO", "#{reducerName.toUpperCase()}")
       result = result.replace("demo", "#{reducerName}")
+      result = result.replace("demoMiddleware", "#{middlewareName}")
 
       fs.writeFile(path.resolve(__dirname, "../../app/reducers/#{reducerName}.coffee"), result, (err) ->
         if (err)

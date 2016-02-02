@@ -85,8 +85,13 @@ processArgsReducer= ->
   storeIndex = process.argv.indexOf('--store')
   storeName = process.argv[storeIndex + 1]
 
+  if hasMiddleware
+    middlewareIndex = process.argv.indexOf('--middleware')
+    middlewareName = process.argv[middlewareIndex + 1]
+
   hasMiddleware: hasMiddleware
   storeName: storeName
+  middlewareName: middlewareName
 
 processArgsMiddleware= ->
   baseIndex = process.argv.indexOf('--middleware')
@@ -151,7 +156,7 @@ module.exports = ->
 
     if args['hasMiddleware'] == true
       __(action: 'Generate REDUCER with MIDDLEWARE', state: 'generating', message: args['storeName'])
-      reducer.generateReducer(args['storeName'])
+      reducer.generateReducer(args['storeName'], args['middlewareName'])
       __(action: 'Generate REDUCER with MIDDLEWARE', state: 'generated', status: 'success')
 
     else

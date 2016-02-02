@@ -1,4 +1,4 @@
-middlewareDemo = require('../middleware/middlewareDemo')
+demoMiddleware = require('../middleware/demoMiddleware')
 {createStore, applyMiddleware} = require('redux')
 
 demoStore = (state = {demo: {}}, action) ->
@@ -8,5 +8,5 @@ demoStore = (state = {demo: {}}, action) ->
     else
       return state
 
-createStoreWithMiddleware = applyMiddleware(middlewareDemo)(createStore)
+createStoreWithMiddleware = applyMiddleware(demoMiddleware)(createStore)
 module.exports = store: createStoreWithMiddleware(demoStore)
