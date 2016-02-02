@@ -3,6 +3,8 @@ views = require('./generators/views.coffee')
 app = require('./generators/new.coffee')
 nav = require('./generators/nav.coffee')
 test = require('./generators/test.coffee')
+reducer = require('./generators/reducer.coffee')
+middleware = require('./generators/middleware.coffee')
 exec = require('child_process').exec
 __ = require('./logger.coffee')
 
