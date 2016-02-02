@@ -180,6 +180,24 @@ With custom folder name
   ./fp g --navigation
 ```
 
+#### Generate reducer with middleware
+
+```shell
+  ./fp g --reducer --middleware
+```
+
+#### Generate reducer without middleware
+
+```shell
+  ./fp g --reducer
+```
+
+#### Generate middleware
+
+```shell
+  ./fp g --middleware
+```
+
 ---
 
 ## Contributing
