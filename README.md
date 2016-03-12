@@ -1,7 +1,7 @@
 # French Press
 ---
 
-An opinionated ReactJs + Webpack generator for CoffeeScript with hot reloader.
+An opinionated ReactJs + Webpack generator for CoffeeScript.
 
 <img src="https://pixabay.com/static/uploads/photo/2013/07/13/11/56/coffee-159007_960_720.png" alt="A french press" align="right"/>
 ---
